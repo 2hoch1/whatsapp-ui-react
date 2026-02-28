@@ -72,9 +72,11 @@ const history: GroupedMessage[] = [
 
 Automated replies that fire when an incoming message matches a trigger:
 
+<!-- prettier-ignore -->
 ```tsx
-import { Chat, Message, Text, Reply } from 'whatsapp-ui-react'
-;<Chat
+import { Chat, Message, Text, Reply } from 'whatsapp-ui-react';
+
+<Chat
   name="Support Bot"
   onReply={
     <Reply
