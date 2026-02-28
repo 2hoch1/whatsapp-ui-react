@@ -1,15 +1,36 @@
 {
-  "name": "ts-template",
-  "version": "0.1.0",
-  "description": "A flexible TypeScript project template.",
+  "name": "whatsapp-ui-react",
+  "version": "0.0.1",
+  "description": "React component library with a WhatsApp Web-inspired UI.",
+  "keywords": [
+    "react",
+    "whatsapp",
+    "chat",
+    "ui",
+    "component",
+    "tailwindcss"
+  ],
+  "homepage": "https://github.com/2hoch1/whatsapp-ui-react#readme",
+  "bugs": {
+    "url": "https://github.com/2hoch1/whatsapp-ui-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/2hoch1/whatsapp-ui-react.git"
+  },
+  "license": "Apache-2.0",
   "type": "module",
-  "main": "./dist/index.js",
+  "sideEffects": false,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    }
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles": "./dist/tailwind.css"
   },
   "files": [
     "dist"
@@ -18,33 +39,58 @@
     "node": ">=18"
   },
   "scripts": {
-    "build": "tsc",
-    "type-check": "tsc --noEmit",
-    "lint": "eslint src tests",
-    "lint:fix": "eslint src tests --fix",
-    "format": "prettier --write \"src/**/*.{ts,tsx,mts}\" \"tests/**/*.{ts,tsx,mts}\" \"*.{json,md,yml,yaml}\" \".github/**/*.{yml,yaml,json,md}\"",
-    "format:check": "prettier --check \"src/**/*.{ts,tsx,mts}\" \"tests/**/*.{ts,tsx,mts}\" \"*.{json,md,yml,yaml}\" \".github/**/*.{yml,yaml,json,md}\"",
+    "dev": "vite --config vite.dev.config.ts",
+    "build": "tsc --noEmit && vite build",
+    "postbuild": "node --input-type=module --eval \"import{copyFileSync}from'fs';copyFileSync('./src/tailwind.css','./dist/tailwind.css');\"",
+    "build:preview": "vite build --config vite.dev.config.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\" \"*.{json,md,yml,yaml}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx}\" \"*.{json,md,yml,yaml}\"",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "prepare": "husky"
   },
-  "dependencies": {},
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
   "devDependencies": {
     "@commitlint/cli": "^19.0.0",
     "@commitlint/config-conventional": "^19.0.0",
+    "@eslint/js": "^9.0.0",
+    "@tailwindcss/vite": "^4.2.1",
+    "@testing-library/jest-dom": "^6.0.0",
+    "@testing-library/react": "^16.0.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
+    "@vitejs/plugin-react": "^4.0.0",
     "@vitest/coverage-v8": "^3.0.0",
     "eslint": "^9.0.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react": "^7.0.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
     "husky": "^9.0.0",
+    "jsdom": "^26.0.0",
     "lint-staged": "^15.0.0",
     "prettier": "^3.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "tailwindcss": "^4.2.1",
     "tsx": "^4.0.0",
     "typescript": "^5.0.0",
     "typescript-eslint": "^8.0.0",
+    "vite": "^6.0.0",
+    "vite-plugin-dts": "^4.0.0",
     "vitest": "^3.0.0"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.5.0"
   }
 }

@@ -12,3 +12,5 @@ coverage/
 .idea/
 *.iml
 out/
+.vercel
+vercel.json

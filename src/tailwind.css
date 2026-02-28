@@ -1,0 +1,49 @@
+@theme {
+  /* ── Background colors ── */
+  --color-wa-bg: #161717;
+  --color-wa-header: #161717;
+  --color-wa-bubble-out: #144d37;
+  --color-wa-bubble-in: #202c33;
+  --color-wa-input: #242626;
+  --color-wa-avatar: #2a3942;
+  --color-wa-divider: #182229;
+
+  /* ── Text colors ── */
+  --color-wa-text-primary: #e9edef;
+  --color-wa-text-secondary: #8696a0;
+  --color-wa-text-body: #d1d7db;
+  --color-wa-icon: #aebac1;
+
+  /* ── Accent colors ── */
+  --color-wa-teal: #00a884;
+  --color-wa-teal-hover: #06cf9c;
+  --color-wa-send: #21c063;
+  --color-wa-read: #53bdeb;
+  --color-wa-waveform-out: #53bdeb;
+  --color-wa-waveform-in: #8696a0;
+  --color-wa-waveform-out-faint: rgba(83, 189, 235, 0.4);
+  --color-wa-waveform-in-faint: rgba(134, 150, 160, 0.4);
+
+  /* ── Border radii ── */
+  --radius-wa-bubble: 0.525rem;
+  --radius-wa-divider: 0.325rem;
+}
+
+/* ── Custom scrollbar ── */
+.scrollbar-wa {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+.scrollbar-wa::-webkit-scrollbar {
+  width: 4px;
+}
+.scrollbar-wa::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-wa::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 9999px;
+}
+.scrollbar-wa::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
