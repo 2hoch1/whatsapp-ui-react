@@ -16,10 +16,10 @@ export const sarahMessages: GroupedMessage[] = [
   {
     id: 's2',
     senderId: 'me',
-    timestamp: '2026-03-01T10:03:00.000Z',
+    timestamp: '2026-03-01T10:02:00.000Z',
     node: (
-      <Message direction="out" mode="neutral" time="10:03" status="read">
-        <Text content="Of course! What time does it start?" />
+      <Message direction="out" mode="neutral" time="10:02" status="read">
+        <Text content="Yeah of course 🙂 What time does it start?" />
       </Message>
     ),
   },
@@ -29,7 +29,7 @@ export const sarahMessages: GroupedMessage[] = [
     timestamp: '2026-03-01T10:04:00.000Z',
     node: (
       <Message direction="in" mode="neutral" time="10:04">
-        <Text content="7pm, at her place" />
+        <Text content="7pm at her place." />
       </Message>
     ),
   },
@@ -38,8 +38,8 @@ export const sarahMessages: GroupedMessage[] = [
     senderId: 'me',
     timestamp: '2026-03-01T10:06:00.000Z',
     node: (
-      <Message direction="out" mode="neutral" time="10:06" status="delivered">
-        <Text content="Should I bring anything?" />
+      <Message direction="out" mode="neutral" time="10:06" status="read">
+        <Text content="Nice. Want me to bring anything?" />
       </Message>
     ),
   },
@@ -49,27 +49,27 @@ export const sarahMessages: GroupedMessage[] = [
     timestamp: '2026-03-01T10:08:00.000Z',
     node: (
       <Message direction="in" mode="neutral" time="10:08">
-        <Text content="She said no gifts but I'm getting her flowers anyway 😂" />
+        <Text content="She said no gifts, but I’m bringing flowers anyway 😂" />
       </Message>
     ),
   },
   {
     id: 's6',
     senderId: 'me',
-    timestamp: '2026-03-01T10:10:00.000Z',
+    timestamp: '2026-03-01T10:09:00.000Z',
     node: (
-      <Message direction="out" mode="neutral" time="10:10" status="read">
-        <Text content="Good call, I'll bring wine then 🍷" />
+      <Message direction="out" mode="neutral" time="10:09" status="read">
+        <Text content="Fair. I’ll grab a bottle of wine then 🍷" />
       </Message>
     ),
   },
   {
     id: 's7',
     senderId: 'sarah',
-    timestamp: '2026-03-01T10:12:00.000Z',
+    timestamp: '2026-03-01T10:11:00.000Z',
     node: (
-      <Message direction="in" mode="neutral" time="10:12">
-        <Text content="Perfect! See you there 🎉" />
+      <Message direction="in" mode="neutral" time="10:11">
+        <Text content="Perfect. See you Saturday 🎉" />
       </Message>
     ),
   },
@@ -79,17 +79,17 @@ export const sarahMessages: GroupedMessage[] = [
     timestamp: '2026-03-02T10:30:00.000Z',
     node: (
       <Message direction="out" mode="neutral" time="10:30" status="read">
-        <Text content="That was so fun last night!" />
+        <Text content="Last night was actually so much fun 😄" />
       </Message>
     ),
   },
   {
     id: 's9',
     senderId: 'sarah',
-    timestamp: '2026-03-02T10:35:00.000Z',
+    timestamp: '2026-03-02T10:33:00.000Z',
     node: (
-      <Message direction="in" mode="neutral" time="10:35">
-        <Text content="Right?? We need to do this more often 😄" />
+      <Message direction="in" mode="neutral" time="10:33">
+        <Text content="Right?? I did not expect it to go that long 😂" />
       </Message>
     ),
   },
@@ -98,8 +98,8 @@ export const sarahMessages: GroupedMessage[] = [
     senderId: 'me',
     timestamp: '2026-03-02T10:35:00.000Z',
     node: (
-      <Message direction="out" mode="neutral" time="10:35">
-        <Text content="You got still got my metal plates?" />
+      <Message direction="out" mode="neutral" time="10:35" status="delivered">
+        <Text content="By the way, do you still have my metal plates from the kitchen?" />
       </Message>
     ),
   },
@@ -118,8 +118,8 @@ export const sarahMessages: GroupedMessage[] = [
     senderId: 'me',
     timestamp: '2026-03-02T10:37:00.000Z',
     node: (
-      <Message direction="out" mode="neutral" time="10:37">
-        <Text content="Good to know. :)" />
+      <Message direction="out" mode="neutral" time="10:37" status="read">
+        <Text content="I’m going to assume that means yes 😅" />
       </Message>
     ),
   },
