@@ -25,6 +25,9 @@ export { Reply } from './components/Reply'
 
 export { useMessages } from './hooks/useMessages'
 
+export { ChatReplyContext } from './components/Chat/ChatReplyContext'
+export type { AddMessageOptions, ChatReplyContextValue } from './components/Chat/ChatReplyContext'
+
 export type * from './hooks/useReply'
 export { useReply } from './hooks/useReply'
 
