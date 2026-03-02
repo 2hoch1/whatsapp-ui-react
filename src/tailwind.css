@@ -1,3 +1,8 @@
+@import 'tailwindcss';
+@source './components/**/*.tsx';
+@source './hooks/**/*.ts';
+@source './utils/**/*.ts';
+
 @theme {
   /* ── Background colors ── */
   --color-wa-bg: #161717;

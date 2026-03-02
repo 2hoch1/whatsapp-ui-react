@@ -41,7 +41,7 @@
   "scripts": {
     "dev": "vite --config vite.dev.config.ts",
     "build": "tsc --noEmit && vite build",
-    "postbuild": "node --input-type=module --eval \"import{copyFileSync}from'fs';copyFileSync('./src/tailwind.css','./dist/tailwind.css');\"",
+    "postbuild": "tailwindcss -i ./src/tailwind.css -o ./dist/tailwind.css --minify",
     "build:preview": "vite build --config vite.dev.config.ts",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src",
@@ -61,6 +61,7 @@
     "@commitlint/cli": "^19.0.0",
     "@commitlint/config-conventional": "^19.0.0",
     "@eslint/js": "^9.0.0",
+    "@tailwindcss/cli": "^4.2.1",
     "@tailwindcss/vite": "^4.2.1",
     "@testing-library/jest-dom": "^6.0.0",
     "@testing-library/react": "^16.0.0",
