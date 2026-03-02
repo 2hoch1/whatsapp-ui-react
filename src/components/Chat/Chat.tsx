@@ -10,6 +10,12 @@ import { MessageList } from './MessageList'
 
 const backgroundUrl = new URL('./background.png', import.meta.url).href
 
+/** Imperative handle exposed via a ref on {@link Chat}. */
+export interface ChatHandle {
+  /** Appends an arbitrary message node to the chat list. */
+  addMessage: (options: { node: React.ReactNode; senderId?: string }) => void
+}
+
 /** Props for the {@link Chat} component. */
 export interface ChatProps {
   /** Display name shown in the chat header. */
@@ -40,6 +46,13 @@ export interface ChatProps {
   onSendMessage?: (value: string) => void
   /** One or more `<Reply>` nodes rendered inside `ChatReplyContext` so they can subscribe to new messages. */
   onReply?: React.ReactNode
+  /**
+   * Controls the message area background.
+   * - Omitted (default): renders the built-in tiled background image.
+   * - Hex color string (e.g. `"#3a7bd5"`): fills the area with that solid color.
+   * - `null` or `'none'`: no background, falls back to `#0a0a0a`.
+   */
+  background?: string | null
   /** Handler for the emoji/sticker button in the input bar. */
   onEmojiClick?: () => void
   /** Handler for the attachment button in the input bar. */
@@ -53,27 +66,34 @@ export interface ChatProps {
 /**
  * Top-level chat component. Manages the message list state and composes
  * the header, scrollable message list, and input bar.
+ *
+ * Attach a `ref` to get an imperative {@link ChatHandle} for dynamically
+ * adding messages.
  */
-function Chat({
-  name,
-  avatarUrl,
-  subtitle,
-  children,
-  className,
-  messageHistory,
-  showInputfield = true,
-  locked = false,
-  inputPlaceholder,
-  inputValue,
-  defaultInputValue,
-  onInputValueChange,
-  onSendMessage,
-  onReply,
-  onEmojiClick,
-  onAttachClick,
-  onCameraClick,
-  onMicClick,
-}: ChatProps): React.JSX.Element {
+const Chat = React.forwardRef<ChatHandle, ChatProps>(function Chat(
+  {
+    name,
+    avatarUrl,
+    subtitle,
+    children,
+    className,
+    messageHistory,
+    showInputfield = true,
+    locked = false,
+    inputPlaceholder,
+    inputValue,
+    defaultInputValue,
+    onInputValueChange,
+    onSendMessage,
+    onReply,
+    background,
+    onEmojiClick,
+    onAttachClick,
+    onCameraClick,
+    onMicClick,
+  }: ChatProps,
+  ref
+): React.JSX.Element {
   const [messages, setMessages] = React.useState<GroupedMessage[]>(messageHistory ?? [])
   const scrollRef = React.useRef<HTMLDivElement>(null)
 
@@ -121,19 +141,34 @@ function Chat({
     ])
   }
 
+  React.useImperativeHandle(ref, () => ({ addMessage }))
+
+  const isDefaultBg = background === undefined
+  const bgStyle: React.CSSProperties =
+    background === null || background === 'none'
+      ? { backgroundColor: '#0a0a0a' }
+      : isDefaultBg
+        ? {}
+        : { backgroundColor: background }
+
   return (
     <ChatReplyContext.Provider value={{ messages, sendMessage, addMessage, provided: true }}>
-      <div className={cn('flex h-full min-h-0 flex-col bg-wa-bg', className)}>
+      <div
+        className={cn('flex h-full min-h-0 flex-col', isDefaultBg ? 'bg-wa-bg' : '', className)}
+        style={isDefaultBg ? undefined : bgStyle}
+      >
         <ChatHeader
           name={name}
           {...(avatarUrl ? { avatarUrl } : {})}
           {...(subtitle ? { subtitle } : {})}
         />
         <div className="relative isolate flex min-h-0 flex-1 flex-col">
-          <div
-            className="pointer-events-none absolute inset-0 -z-10 bg-repeat opacity-[0.06]"
-            style={{ backgroundImage: `url(${backgroundUrl})` }}
-          />
+          {isDefaultBg && (
+            <div
+              className="pointer-events-none absolute inset-0 -z-10 bg-repeat opacity-[0.06]"
+              style={{ backgroundImage: `url(${backgroundUrl})` }}
+            />
+          )}
           <div ref={scrollRef} className="scrollbar-wa flex-1 overflow-y-auto py-2 px-12">
             {messages.length > 0 ? <MessageList messages={messages} /> : children}
           </div>
@@ -158,6 +193,6 @@ function Chat({
       </div>
     </ChatReplyContext.Provider>
   )
-}
+})
 
 export { Chat }

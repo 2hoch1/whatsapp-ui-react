@@ -1,5 +1,5 @@
 import React from 'react'
-import { ChatReplyContext } from '../../src/components/Chat/ChatReplyContext'
+import type { ChatHandle } from '../../src/components/Chat/Chat'
 import { Message, Text } from '../../src/components/Message'
 
 function nowTime(): string {
@@ -7,19 +7,22 @@ function nowTime(): string {
 }
 
 /**
- * Renders nothing – fires a scripted WorkTeam chat animation on mount.
- * Place inside <Chat onReply={…}> so it has access to ChatReplyContext.
+ * Fires a scripted WorkTeam chat animation on mount via the Chat ref.
  */
-export function WorkTeamAnimation(): null {
-  const { addMessage } = React.useContext(ChatReplyContext)
-
+export function WorkTeamAnimation({
+  chatRef,
+}: {
+  chatRef: React.RefObject<ChatHandle | null>
+}): null {
   React.useEffect(() => {
     const timers: ReturnType<typeof setTimeout>[] = []
     const at = (ms: number, fn: () => void) => timers.push(setTimeout(fn, ms))
+    const add = (options: Parameters<ChatHandle['addMessage']>[0]) =>
+      chatRef.current?.addMessage(options)
 
     // Kai opens the thread
     at(5200, () =>
-      addMessage({
+      add({
         senderId: 'kai',
         node: (
           <Message
@@ -39,7 +42,7 @@ export function WorkTeamAnimation(): null {
 
     // Hannah replies
     at(10200, () =>
-      addMessage({
+      add({
         senderId: 'hannah',
         node: (
           <Message
@@ -59,7 +62,7 @@ export function WorkTeamAnimation(): null {
 
     // Tom elaborates
     at(15800, () =>
-      addMessage({
+      add({
         senderId: 'tom',
         node: (
           <Message
@@ -79,7 +82,7 @@ export function WorkTeamAnimation(): null {
 
     // Kai stressed
     at(18500, () =>
-      addMessage({
+      add({
         senderId: 'kai',
         node: (
           <Message
@@ -99,7 +102,7 @@ export function WorkTeamAnimation(): null {
 
     // You reassure
     at(21500, () =>
-      addMessage({
+      add({
         senderId: 'me',
         node: (
           <Message direction="out" mode="neutral" time={nowTime()} status="sent">
@@ -111,7 +114,7 @@ export function WorkTeamAnimation(): null {
 
     // You send command
     at(23500, () =>
-      addMessage({
+      add({
         senderId: 'me',
         node: (
           <Message direction="out" mode="neutral" time={nowTime()} status="sent">
@@ -123,7 +126,7 @@ export function WorkTeamAnimation(): null {
 
     // WorkBot answers instantly
     at(24000, () =>
-      addMessage({
+      add({
         senderId: 'workbot',
         node: (
           <Message
