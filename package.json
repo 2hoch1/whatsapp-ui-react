@@ -1,6 +1,6 @@
 {
   "name": "whatsapp-ui-react",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "React component library with a WhatsApp Web-inspired UI.",
   "keywords": [
     "react",
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/2hoch1/whatsapp-ui-react.git"
+    "url": "git+https://github.com/2hoch1/whatsapp-ui-react.git"
   },
   "license": "Apache-2.0",
   "type": "module",
@@ -29,8 +29,7 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
-    },
-    "./styles": "./dist/tailwind.css"
+    }
   },
   "files": [
     "dist"
@@ -41,7 +40,6 @@
   "scripts": {
     "dev": "vite --config vite.dev.config.ts",
     "build": "tsc --noEmit && vite build",
-    "postbuild": "tailwindcss -i ./src/tailwind.css -o ./dist/tailwind.css --minify",
     "build:preview": "vite build --config vite.dev.config.ts",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src",

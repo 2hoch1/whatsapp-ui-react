@@ -50,12 +50,12 @@ function Voice({ src, duration, avatarUrl: avatarProp }: VoiceProps): React.JSX.
         {/* Avatar */}
         <span
           aria-hidden="true"
-          className="flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-wa-avatar"
+          className="flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#2a3942]"
         >
           {avatar ? (
             <img src={avatar} alt="" className="size-full object-cover" />
           ) : (
-            <AvatarPlaceholderIcon className="size-6 text-wa-text-secondary" />
+            <AvatarPlaceholderIcon className="size-6 text-[#8696a0]" />
           )}
         </span>
 
@@ -66,7 +66,7 @@ function Voice({ src, duration, avatarUrl: avatarProp }: VoiceProps): React.JSX.
           type="button"
           onClick={toggle}
           aria-label={playing ? 'Pause' : 'Play'}
-          className="shrink-0 text-wa-text-secondary transition-opacity hover:opacity-70"
+          className="shrink-0 text-[#8696a0] transition-opacity hover:opacity-70"
         >
           {playing ? <PauseIcon /> : <PlayIcon />}
         </button>
@@ -83,12 +83,12 @@ function Voice({ src, duration, avatarUrl: avatarProp }: VoiceProps): React.JSX.
             seek={seek}
           />
         ) : (
-          <span className="flex-1 text-xs text-wa-text-secondary">No audio source</span>
+          <span className="flex-1 text-xs text-[#8696a0]">No audio source</span>
         )}
       </div>
 
       <span
-        className="pointer-events-none absolute bottom-1 left-28 text-xs font-medium text-wa-text-secondary"
+        className="pointer-events-none absolute bottom-1 left-28 text-xs font-medium text-[#8696a0]"
         aria-hidden="true"
       >
         {displayDuration}

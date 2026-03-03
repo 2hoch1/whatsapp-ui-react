@@ -41,10 +41,7 @@ const MessageContext = React.createContext<MessageContextValue>({
   group: false,
 })
 
-/**
- * Returns the context provided by the nearest ancestor {@link Message}.
- * Use inside custom message content components.
- */
+/** Returns the context provided by the nearest ancestor `<Message>`. */
 function useMessage(): MessageContextValue {
   return React.useContext(MessageContext)
 }

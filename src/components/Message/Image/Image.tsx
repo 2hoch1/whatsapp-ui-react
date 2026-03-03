@@ -16,7 +16,7 @@ export interface ImageProps {
 function Image({ src, alt = '', className }: ImageProps): React.JSX.Element {
   return (
     <div className={cn('w-[336px]', className)}>
-      <img src={src} alt={alt} className="w-full rounded-wa-bubble object-cover" />
+      <img src={src} alt={alt} className="w-full rounded-[0.525rem] object-cover" />
     </div>
   )
 }

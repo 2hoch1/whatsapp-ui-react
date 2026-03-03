@@ -20,16 +20,15 @@ function ChatHeader({ className, name, avatarUrl, subtitle }: ChatHeaderProps): 
   return (
     <div
       className={cn(
-        'flex items-center gap-3 bg-wa-header px-4 py-3 shadow-[0_1px_4px_rgba(0,0,0,0.15)]',
+        'flex items-center gap-3 bg-[#161717] px-4 py-3 shadow-[0_1px_4px_rgba(0,0,0,0.15)]',
         className
       )}
     >
-      {/* Avatar */}
       <span className="shrink-0">
         {avatarUrl ? (
           <img src={avatarUrl} alt={name} className="size-10 rounded-full object-cover" />
         ) : (
-          <span className="flex size-10 items-center justify-center rounded-full bg-wa-avatar text-sm font-medium text-wa-text-primary">
+          <span className="flex size-10 items-center justify-center rounded-full bg-[#2a3942] text-sm font-medium text-[#e9edef]">
             {initials}
           </span>
         )}
@@ -37,8 +36,8 @@ function ChatHeader({ className, name, avatarUrl, subtitle }: ChatHeaderProps): 
 
       {/* Name + subtitle */}
       <span className="flex min-w-0 flex-1 flex-col">
-        <span className="truncate text-[15px] font-medium text-wa-text-primary">{name}</span>
-        {subtitle && <span className="truncate text-xs text-wa-text-secondary">{subtitle}</span>}
+        <span className="truncate text-[15px] font-medium text-[#e9edef]">{name}</span>
+        {subtitle && <span className="truncate text-xs text-[#8696a0]">{subtitle}</span>}
       </span>
     </div>
   )

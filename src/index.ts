@@ -1,6 +1,12 @@
 export type * from './components/Chat'
-export type { ChatHandle } from './components/Chat/Chat'
 export { Chat } from './components/Chat'
+export type { ChatHandle } from './components/Chat/Chat'
+
+export type * from './components/History'
+export { History } from './components/History'
+
+export type * from './components/Animated'
+export { Animated } from './components/Animated'
 
 export type * from './components/Message'
 export {
@@ -16,9 +22,9 @@ export {
   Poll,
   Sticker,
   Text,
+  useMessage,
   Video,
   Voice,
-  useMessage,
 } from './components/Message'
 
 export type * from './components/Reply'

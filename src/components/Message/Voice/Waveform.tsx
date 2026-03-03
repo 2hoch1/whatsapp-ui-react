@@ -10,13 +10,16 @@ const BAR_MAX_HEIGHT = 26
 const BAR_WIDTH = 3
 const SLOT_WIDTH = CANVAS_WIDTH / BAR_COUNT
 
-function readCssVar(name: string): string {
-  return getComputedStyle(document.documentElement).getPropertyValue(name).trim()
+const COLORS = {
+  waveformOut: '#53bdeb',
+  waveformIn: '#8696a0',
+  waveformOutFaint: 'rgba(83, 189, 235, 0.4)',
+  waveformInFaint: 'rgba(134, 150, 160, 0.4)',
 }
 
 /** @internal */
 export interface WaveformProps {
-  /** Amplitude bars to render — array of `BAR_COUNT` values in the range `0`–`10`. */
+  /** Amplitude bars to render - array of `BAR_COUNT` values in the range `0`–`10`. */
   bars: number[]
   /** Playback progress in the range `0`–`1`; determines the played/unplayed colour split. */
   progress: number
@@ -39,12 +42,8 @@ function Waveform({ bars, progress, isOut, hasPlayed, seek }: WaveformProps): Re
 
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT)
 
-    const colorPlayed = isOut
-      ? readCssVar('--color-wa-waveform-out')
-      : readCssVar('--color-wa-waveform-in')
-    const colorUnplayed = isOut
-      ? readCssVar('--color-wa-waveform-out-faint')
-      : readCssVar('--color-wa-waveform-in-faint')
+    const colorPlayed = isOut ? COLORS.waveformOut : COLORS.waveformIn
+    const colorUnplayed = isOut ? COLORS.waveformOutFaint : COLORS.waveformInFaint
 
     bars.forEach((amplitude, i) => {
       // Treat 0 (silence / not yet loaded) as 1 - every bar shows as a minimal dot
@@ -72,7 +71,7 @@ function Waveform({ bars, progress, isOut, hasPlayed, seek }: WaveformProps): Re
         aria-hidden="true"
         className={cn(
           'pointer-events-none absolute top-1/2 size-3 -translate-x-1/2 -translate-y-1/2 rounded-full',
-          hasPlayed || isOut ? 'bg-wa-waveform-out' : 'bg-wa-waveform-in'
+          hasPlayed || isOut ? 'bg-[#53bdeb]' : 'bg-[#8696a0]'
         )}
         style={{ left: `${progress * 100}%` }}
       />

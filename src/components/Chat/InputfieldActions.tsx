@@ -38,7 +38,7 @@ function ActionButton({
       type="button"
       onClick={onClick}
       aria-label={label}
-      className="inline-flex size-8 shrink-0 items-center justify-center rounded-full text-wa-icon transition-colors hover:text-wa-text-primary"
+      className="inline-flex size-8 shrink-0 items-center justify-center rounded-full text-[#aebac1] transition-colors hover:text-[#e9edef]"
     >
       {children}
     </button>
@@ -58,7 +58,7 @@ function InputfieldActions({
 }: InputfieldActionsProps): React.JSX.Element {
   return (
     <div className={cn('flex w-full items-end', className)}>
-      <div className="flex min-h-10.5 flex-1 items-center gap-1 rounded-full bg-wa-input px-3">
+      <div className="flex min-h-10.5 flex-1 items-center gap-1 rounded-full bg-[#242626] px-3">
         <ActionButton label="Attachments" {...(onAttachClick ? { onClick: onAttachClick } : {})}>
           <AttachIcon className="size-6" />
         </ActionButton>
@@ -75,7 +75,7 @@ function InputfieldActions({
             onClick={onSendClick}
             disabled={sendDisabled}
             aria-label="Send message"
-            className="inline-flex size-8 shrink-0 items-center justify-center rounded-full bg-wa-send text-white transition-colors hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+            className="inline-flex size-8 shrink-0 items-center justify-center rounded-full bg-[#21c063] text-white transition-colors hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
           >
             <SendIcon className="ml-0.5 size-4" />
           </button>
@@ -84,7 +84,7 @@ function InputfieldActions({
             type="button"
             onClick={onMicClick}
             aria-label="Record voice message"
-            className="group inline-flex size-8 shrink-0 items-center justify-center rounded-full text-wa-icon transition-colors hover:bg-wa-teal hover:text-black"
+            className="group inline-flex size-8 shrink-0 items-center justify-center rounded-full text-[#aebac1] transition-colors hover:bg-[#00a884] hover:text-black"
           >
             <MicOutlineIcon className="size-5 group-hover:hidden" />
             <MicFillIcon className="hidden size-5 group-hover:block" />

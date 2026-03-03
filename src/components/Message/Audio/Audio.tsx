@@ -28,9 +28,9 @@ function Audio({ src, duration, fileName }: AudioProps): React.JSX.Element {
   }, [progress])
 
   const displayDuration = totalDuration > 0 ? fmtTime(remaining) : (duration ?? '0:00')
-  const trackColor = isOut ? 'bg-wa-waveform-out' : 'bg-wa-waveform-in'
-  const trackColorFaint = isOut ? 'bg-wa-waveform-out/40' : 'bg-wa-waveform-in/40'
-  const dotColor = hasPlayed || isOut ? 'bg-wa-waveform-out' : 'bg-wa-waveform-in'
+  const trackColor = isOut ? 'bg-[#53bdeb]' : 'bg-[#8696a0]'
+  const trackColorFaint = isOut ? 'bg-[#53bdeb]/40' : 'bg-[#8696a0]/40'
+  const dotColor = hasPlayed || isOut ? 'bg-[#53bdeb]' : 'bg-[#8696a0]'
 
   return (
     <>
@@ -51,7 +51,7 @@ function Audio({ src, duration, fileName }: AudioProps): React.JSX.Element {
           type="button"
           onClick={toggle}
           aria-label={playing ? 'Pause' : 'Play'}
-          className="shrink-0 text-wa-text-secondary transition-opacity hover:opacity-70"
+          className="shrink-0 text-[#8696a0] transition-opacity hover:opacity-70"
         >
           {playing ? <PauseIcon /> : <PlayIcon />}
         </button>
@@ -97,7 +97,7 @@ function Audio({ src, duration, fileName }: AudioProps): React.JSX.Element {
       </div>
 
       <span
-        className="pointer-events-none absolute bottom-1 left-28 text-xs font-medium text-wa-text-secondary"
+        className="pointer-events-none absolute bottom-1 left-28 text-xs font-medium text-[#8696a0]"
         aria-hidden="true"
       >
         {displayDuration}

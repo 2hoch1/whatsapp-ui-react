@@ -1,14 +1,11 @@
 import React from 'react'
 import { Chat } from '../src/components/Chat'
-import type { ChatHandle } from '../src/components/Chat/Chat'
-import { bbqMessages, bbqReply } from './data/groupChat1'
-import { WorkTeamAnimation } from './data/groupChat2'
-import { workBotMessages, workBotReply } from './data/privateChat1'
-import { sarahMessages } from './data/privateChat2'
+import { BbqHistory, bbqReply } from './data/groupChat1'
+import { WorkTeamHistory } from './data/groupChat2'
+import { WorkBotHistory, workBotReply } from './data/privateChat1'
+import { SarahHistory } from './data/privateChat2'
 
 export function App(): React.JSX.Element {
-  const workTeamRef = React.useRef<ChatHandle>(null)
-
   return (
     <div className="flex min-h-screen flex-col bg-[#0d1418]">
       <header className="flex shrink-0 items-center justify-center border-b border-white/10 px-8 py-5">
@@ -23,9 +20,10 @@ export function App(): React.JSX.Element {
               subtitle="online"
               avatarUrl="https://i.pravatar.cc/40?img=68"
               className="h-full"
-              messageHistory={workBotMessages}
               onReply={workBotReply}
-            />
+            >
+              <WorkBotHistory />
+            </Chat>
           </div>
 
           <div className="h-[450px] w-[550px] overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10">
@@ -34,8 +32,9 @@ export function App(): React.JSX.Element {
               subtitle="last seen today at 10:35"
               avatarUrl="https://i.pravatar.cc/40?img=47"
               className="h-full"
-              messageHistory={sarahMessages}
-            />
+            >
+              <SarahHistory />
+            </Chat>
           </div>
 
           <div className="h-[450px] w-[550px] overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10">
@@ -44,22 +43,23 @@ export function App(): React.JSX.Element {
               subtitle="Me, Mats, Josh, Philipp, Ben, Mattis, Tobias, Aaron"
               avatarUrl="https://i.pravatar.cc/40?img=3"
               className="h-full"
-              messageHistory={bbqMessages}
               locked
               onReply={bbqReply}
-            />
+            >
+              <BbqHistory />
+            </Chat>
           </div>
 
           <div className="h-[450px] w-[550px] overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10">
             <Chat
-              ref={workTeamRef}
               name="Work Team 💼"
               subtitle="Me, Kai, Hannah, Tom, WorkBot 🤖"
               avatarUrl="https://i.pravatar.cc/40?img=12"
               className="h-full"
               locked
-            />
-            <WorkTeamAnimation chatRef={workTeamRef} />
+            >
+              <WorkTeamHistory />
+            </Chat>
           </div>
         </div>
       </main>

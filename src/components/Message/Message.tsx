@@ -9,23 +9,23 @@ import { StatusIcon } from './StatusIcon'
 export interface MessageProps {
   /** `'in'` for received messages, `'out'` for sent. */
   direction: MessageDirection
-  /** First message in a consecutive run — renders the bubble tail. @defaultValue `false` */
+  /** First message in a consecutive run - renders the bubble tail. @defaultValue `false` */
   top?: boolean
-  /** Part of a group chat — renders the sender avatar when `top` is `true`. @defaultValue `false` */
+  /** Part of a group chat - renders the sender avatar when `top` is `true`. @defaultValue `false` */
   group?: boolean
   /** Sender avatar URL (group chats). */
   avatarUrl?: string
   /** Sender display name (group chats). */
   senderName?: string
-  /** Message content — typically one of the content components (`<Text>`, `<Image>`, etc.). */
+  /** Message content - typically one of the content components (`<Text>`, `<Image>`, etc.). */
   children: React.ReactNode
   /** Additional CSS class names applied to the root element. */
   className?: string
   /**
    * Layout mode.
-   * - `'neutral'` — standard bubble with overlaid timestamp
-   * - `'free'` — content fills the bubble, timestamp floats below
-   * - `'custom'` — children render directly with no wrapper
+   * - `'neutral'` - standard bubble with overlaid timestamp
+   * - `'free'` - content fills the bubble, timestamp floats below
+   * - `'custom'` - children render directly with no wrapper
    * @defaultValue `'custom'`
    */
   mode?: 'neutral' | 'free' | 'custom'
@@ -33,6 +33,17 @@ export interface MessageProps {
   time?: string
   /** Delivery status icon shown on outgoing messages. */
   status?: MessageStatus
+  /**
+   * Identifies the sender; used by `<History>` to group consecutive messages.
+   * Use `'me'` for the local user. Has no visual effect on its own.
+   */
+  senderId?: string
+  /**
+   * ISO string or `Date` marking when the message was sent.
+   * Used by `<History>` to insert day-dividers and detect grouping boundaries.
+   * Has no visual effect on its own.
+   */
+  timestamp?: string | Date
 }
 
 function Message({
@@ -50,7 +61,7 @@ function Message({
   const isOut = direction === 'out'
 
   const TimeRow = (): React.JSX.Element => (
-    <span className="flex items-center gap-0.5 text-xs font-medium text-wa-text-secondary">
+    <span className="flex items-center gap-0.5 text-xs font-medium text-[#8696a0]">
       {time}
       {isOut && status !== undefined && <StatusIcon status={status} />}
     </span>
@@ -62,7 +73,7 @@ function Message({
         aria-hidden="true"
         className={cn(
           'pointer-events-none absolute top-0',
-          isOut ? '-right-2 text-wa-bubble-out' : '-left-2 scale-x-[-1] text-wa-bubble-in'
+          isOut ? '-right-2 text-[#144d37]' : '-left-2 scale-x-[-1] text-[#202c33]'
         )}
       >
         <BubbleTailIcon />
@@ -72,8 +83,8 @@ function Message({
   const renderNeutral = (): React.JSX.Element => (
     <div
       className={cn(
-        'relative w-fit rounded-wa-bubble px-3 py-1.5 shadow-md',
-        isOut ? 'bg-wa-bubble-out text-wa-text-primary' : 'bg-wa-bubble-in text-wa-text-primary',
+        'relative w-fit rounded-[0.525rem] px-3 py-1.5 shadow-md',
+        isOut ? 'bg-[#144d37] text-[#e9edef]' : 'bg-[#202c33] text-[#e9edef]',
         top && isOut && 'rounded-tr-none',
         top && !isOut && 'rounded-tl-none'
       )}
@@ -92,7 +103,7 @@ function Message({
       <div
         className={cn(
           'mt-[5px] self-end rounded-full px-1.5 py-0.5',
-          isOut ? 'bg-wa-bubble-out' : 'bg-wa-bubble-in'
+          isOut ? 'bg-[#144d37]' : 'bg-[#202c33]'
         )}
       >
         <TimeRow />
@@ -122,13 +133,13 @@ function Message({
       >
         {top && group && !isOut && (
           <span
-            className="absolute -left-10 top-2 flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-wa-avatar"
+            className="absolute -left-10 top-2 flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#2a3942]"
             aria-hidden="true"
           >
             {avatarUrl ? (
               <img src={avatarUrl} alt="" className="size-full object-cover" />
             ) : (
-              <AvatarPlaceholderIcon className="size-5 text-wa-text-secondary" />
+              <AvatarPlaceholderIcon className="size-5 text-[#8696a0]" />
             )}
           </span>
         )}

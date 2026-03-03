@@ -23,12 +23,18 @@ export interface ChatProps {
   /** URL of the avatar image. Falls back to initials derived from `name` when omitted. */
   avatarUrl?: string
   /** Secondary line displayed below `name` in the header (e.g. `"online"` or `"typing..."`). */
-  subtitle?: string
-  /** Rendered in the message area when no messages exist yet and `messageHistory` is empty. */
+  subtitle?: 'online' | 'typing...' | string
+  /**
+   * Static content rendered at the top of the message area. Typically a `<History>` component.
+   * Rendered unconditionally above any dynamically added messages.
+   */
   children?: React.ReactNode
   /** Additional CSS class names applied to the root element. */
   className?: string
-  /** Initial message list. Copied into internal state on mount; subsequent external changes are ignored. */
+  /**
+   * Initial message list. Copied into internal state on mount; subsequent external changes are ignored.
+   * @deprecated Pass a `<History>` as `children` instead.
+   */
   messageHistory?: GroupedMessage[]
   /** Controls visibility of the input bar. @defaultValue `true` */
   showInputfield?: boolean
@@ -96,12 +102,19 @@ const Chat = React.forwardRef<ChatHandle, ChatProps>(function Chat(
 ): React.JSX.Element {
   const [messages, setMessages] = React.useState<GroupedMessage[]>(messageHistory ?? [])
   const scrollRef = React.useRef<HTMLDivElement>(null)
+  const contentRef = React.useRef<HTMLDivElement>(null)
 
+  // Scrolls to bottom if a new content is added
   React.useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight
-    }
-  }, [messages])
+    const content = contentRef.current
+    const scroll = scrollRef.current
+    if (!content || !scroll) return
+    const ro = new ResizeObserver(() => {
+      scroll.scrollTop = scroll.scrollHeight
+    })
+    ro.observe(content)
+    return () => ro.disconnect()
+  }, [])
 
   function sendMessage(text: string): void {
     const trimmed = text.trim()
@@ -154,7 +167,7 @@ const Chat = React.forwardRef<ChatHandle, ChatProps>(function Chat(
   return (
     <ChatReplyContext.Provider value={{ messages, sendMessage, addMessage, provided: true }}>
       <div
-        className={cn('flex h-full min-h-0 flex-col', isDefaultBg ? 'bg-wa-bg' : '', className)}
+        className={cn('flex h-full min-h-0 flex-col', isDefaultBg ? 'bg-[#161717]' : '', className)}
         style={isDefaultBg ? undefined : bgStyle}
       >
         <ChatHeader
@@ -169,8 +182,14 @@ const Chat = React.forwardRef<ChatHandle, ChatProps>(function Chat(
               style={{ backgroundImage: `url(${backgroundUrl})` }}
             />
           )}
-          <div ref={scrollRef} className="scrollbar-wa flex-1 overflow-y-auto py-2 px-12">
-            {messages.length > 0 ? <MessageList messages={messages} /> : children}
+          <div
+            ref={scrollRef}
+            className="flex-1 overflow-y-auto py-2 px-12 [scrollbar-width:thin] [scrollbar-color:rgba(255,255,255,0.1)_transparent] [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-[rgba(255,255,255,0.18)] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb:hover]:bg-[rgba(255,255,255,0.3)]"
+          >
+            <div ref={contentRef}>
+              {children}
+              {messages.length > 0 && <MessageList messages={messages} />}
+            </div>
           </div>
           {showInputfield && (
             <Inputfield

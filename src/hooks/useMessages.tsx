@@ -4,14 +4,8 @@ import type { Key } from 'react'
 import React from 'react'
 
 /**
- * Event-listener hook — calls `callback` for every new message that arrives
- * in the nearest <Chat>.
- *
- * Must be rendered inside a component that is a descendant of <Chat>
- * (i.e. inside the `onReply` prop or any other child rendered in context).
- *
- * @example
- * useMessages(msg => console.log(msg.senderId, msg.node))
+ * Calls `callback` for every new message that arrives in the nearest `<Chat>`.
+ * Must be rendered as a descendant of `<Chat>` (e.g. via the `onReply` prop).
  */
 export function useMessages(callback: (message: GroupedMessage) => void): void {
   const { messages } = React.useContext(ChatReplyContext)
