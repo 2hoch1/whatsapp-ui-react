@@ -156,25 +156,25 @@ Set `locked` to disable sending while still allowing typing:
 
 ## `<Chat>` props
 
-| Prop                 | Type                  | Default              | Description                                                                                                                              |     |
-| -------------------- | --------------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | --- |
-| `name`               | `string`              |                      | Contact or group name                                                                                                                    |     |
-| `avatarUrl`          | `string`              |                      | Avatar image URL                                                                                                                         |     |
-| `subtitle`           | `string`              |                      | Status text below the name                                                                                                               |     |
-| `children`           | `ReactNode`           |                      | Static content rendered at the top of the message area. Typically a `<History>` component.                                               |     |
-| `showInputfield`     | `boolean`             | `true`               | Show / hide the input bar                                                                                                                |     |
-| `locked`             | `boolean`             | `false`              | Allow typing but disable sending                                                                                                         |     |
-| `inputPlaceholder`   | `string`              | `'Enter a message.'` | Textarea placeholder                                                                                                                     |     |
-| `inputValue`         | `string`              |                      | Controlled input value (use with `onInputValueChange`)                                                                                   |     |
-| `defaultInputValue`  | `string`              |                      | Uncontrolled initial value (internal state managed by component)                                                                         |     |
-| `onInputValueChange` | `(v: string) => void` |                      | Called on every keystroke                                                                                                                |     |
-| `onSendMessage`      | `(v: string) => void` |                      | Called when a message is sent                                                                                                            |     |
-| `onReply`            | `ReactNode`           |                      | `<Reply>` rules rendered inside the chat context                                                                                         |     |
-| `background`         | `string \| null`      | background image     | Message area background. Hex color string for a solid fill; `null` or `'none'` for plain `#0a0a0a`; omit to use the default tiled image. |     |
-| `onEmojiClick`       | `() => void`          |                      | Emoji button click handler                                                                                                               |     |
-| `onAttachClick`      | `() => void`          |                      | Attach button click handler                                                                                                              |     |
-| `onCameraClick`      | `() => void`          |                      | Camera button click handler                                                                                                              |     |
-| `onMicClick`         | `() => void`          |                      | Mic button click handler                                                                                                                 |     |
+| Prop                 | Type                              | Default              | Description                                                                                                                              |
+| -------------------- | --------------------------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`               | `string`                          |                      | Contact or group name                                                                                                                    |
+| `avatarUrl`          | `'online' \| 'typeing' \| string` |                      | Avatar image URL                                                                                                                         |
+| `subtitle`           | `string`                          |                      | Status text below the name                                                                                                               |
+| `children`           | `ReactNode`                       |                      | Static content rendered at the top of the message area. Typically a `<History>` component.                                               |
+| `showInputfield`     | `boolean`                         | `true`               | Show / hide the input bar                                                                                                                |
+| `locked`             | `boolean`                         | `false`              | Allow typing but disable sending                                                                                                         |
+| `inputPlaceholder`   | `string`                          | `'Enter a message.'` | Textarea placeholder                                                                                                                     |
+| `inputValue`         | `string`                          |                      | Controlled input value (use with `onInputValueChange`)                                                                                   |
+| `defaultInputValue`  | `string`                          |                      | Uncontrolled initial value (internal state managed by component)                                                                         |
+| `onInputValueChange` | `(v: string) => void`             |                      | Called on every keystroke                                                                                                                |
+| `onSendMessage`      | `(v: string) => void`             |                      | Called when a message is sent                                                                                                            |
+| `onReply`            | `ReactNode`                       |                      | `<Reply>` rules rendered inside the chat context                                                                                         |
+| `background`         | `string \| null`                  | background image     | Message area background. Hex color string for a solid fill; `null` or `'none'` for plain `#0a0a0a`; omit to use the default tiled image. |
+| `onEmojiClick`       | `() => void`                      |                      | Emoji button click handler                                                                                                               |
+| `onAttachClick`      | `() => void`                      |                      | Attach button click handler                                                                                                              |
+| `onCameraClick`      | `() => void`                      |                      | Camera button click handler                                                                                                              |
+| `onMicClick`         | `() => void`                      |                      | Mic button click handler                                                                                                                 |
 
 ## License
 
