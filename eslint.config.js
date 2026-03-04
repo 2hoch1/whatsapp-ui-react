@@ -14,6 +14,7 @@ export default [
       '*.config.ts',
       '*.config.js',
       '*.config.mjs',
+      'scripts/',
     ],
   },
   js.configs.recommended,

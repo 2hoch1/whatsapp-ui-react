@@ -1,5 +1,3 @@
-import './tailwind.css'
-
 export type * from './components/Chat'
 export { Chat } from './components/Chat'
 export type { ChatHandle } from './components/Chat/Chat'

@@ -2,4 +2,5 @@
 @source './components';
 @source './hooks';
 @source './icons';
-@import './css/dark.css';
+@import './css/natural.css';
+@import './css/preset.css';

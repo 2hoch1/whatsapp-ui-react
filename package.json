@@ -32,19 +32,18 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
-    "./style.css": "./dist/style.css",
-    "./css/*": "./src/css/*"
+    "./css/*": "./css/*"
   },
   "files": [
     "dist",
-    "src/css"
+    "css"
   ],
   "engines": {
     "node": ">=18"
   },
   "scripts": {
     "dev": "vite --config vite.dev.config.ts",
-    "build": "tsc --noEmit && vite build",
+    "build": "tsc --noEmit && vite build && node scripts/copy-css.js",
     "build:preview": "vite build --config vite.dev.config.ts",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src",

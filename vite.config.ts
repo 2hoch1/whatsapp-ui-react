@@ -33,8 +33,6 @@ export default defineConfig({
           'react-dom': 'ReactDOM',
           'react/jsx-runtime': 'jsxRuntime',
         },
-        assetFileNames: assetInfo =>
-          assetInfo.name?.endsWith('.css') ? 'style.css' : '[name][extname]',
       },
     },
     sourcemap: true,
