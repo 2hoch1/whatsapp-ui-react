@@ -20,7 +20,9 @@
   },
   "license": "Apache-2.0",
   "type": "module",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -29,10 +31,16 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
-    }
+    },
+    "./styles": {
+      "style": "./dist/assets/whatsapp-ui-react.css",
+      "default": "./dist/assets/whatsapp-ui-react.css"
+    },
+    "./css/*": "./css/*.css"
   },
   "files": [
-    "dist"
+    "dist",
+    "css"
   ],
   "engines": {
     "node": ">=18"
