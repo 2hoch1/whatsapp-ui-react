@@ -1,4 +1,10 @@
 @import 'tailwindcss';
-@import '../src/css/dark.css';
+@import '../src/css/natural.css';
+@import '../src/css/ocean.css';
+@import '../src/css/forest.css';
+@import '../src/css/rose.css';
 @import '../src/css/preset.css';
 @source '../demo';
+@source '../src/components';
+@source '../src/hooks';
+@source '../src/icons';

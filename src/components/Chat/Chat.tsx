@@ -69,10 +69,22 @@ export interface ChatProps {
   onMicClick?: () => void
   /**
    * Visual colour theme for the chat window.
-   * - `'dark'` (default): WhatsApp dark style.
-   * - `'light'`: WhatsApp light style.
+   * - `'light'` (default): WhatsApp light style.
+   * - `'dark'`: WhatsApp dark style.
    */
   theme?: 'dark' | 'light'
+  /**
+   * Colour scheme applied to the chat window. Requires the matching CSS file to be imported.
+   * - `'natural'` (default): Classic WhatsApp green.
+   * - `'ocean'`: Blue-teal palette.
+   * - `'forest'`: Deep green palette.
+   * - `'rose'`: Pink-rose palette.
+   */
+  colorScheme?: 'natural' | 'ocean' | 'forest' | 'rose'
+  /** Explicit width applied as an inline style (e.g. `400` or `'100%'`). */
+  width?: number | string
+  /** Explicit height applied as an inline style (e.g. `600` or `'100%'`). */
+  height?: number | string
 }
 
 /**
@@ -104,6 +116,9 @@ const Chat = React.forwardRef<ChatHandle, ChatProps>(function Chat(
     onCameraClick,
     onMicClick,
     theme,
+    colorScheme,
+    width,
+    height,
   }: ChatProps,
   ref
 ): React.JSX.Element {
@@ -171,12 +186,26 @@ const Chat = React.forwardRef<ChatHandle, ChatProps>(function Chat(
         ? {}
         : { backgroundColor: background }
 
+  const sizeStyle: React.CSSProperties = {
+    ...(width !== undefined ? { width: typeof width === 'number' ? `${width}px` : width } : {}),
+    ...(height !== undefined
+      ? { height: typeof height === 'number' ? `${height}px` : height }
+      : {}),
+  }
+
   return (
     <ChatReplyContext.Provider value={{ messages, sendMessage, addMessage, provided: true }}>
       <div
-        className={cn('flex h-full min-h-0 flex-col', isDefaultBg ? 'bg-wa-bg' : '', className)}
-        style={isDefaultBg ? undefined : bgStyle}
-        {...(theme ? { 'data-wa-theme': theme } : {})}
+        className={cn(
+          'flex min-h-0 flex-col',
+          width === undefined && 'w-full',
+          height === undefined && 'h-full',
+          isDefaultBg ? 'bg-wa-bg' : '',
+          theme === 'dark' ? 'dark' : '',
+          className
+        )}
+        style={{ ...(isDefaultBg ? {} : bgStyle), ...sizeStyle }}
+        {...(colorScheme ? { 'data-wa-color': colorScheme } : {})}
       >
         <ChatHeader
           name={name}
@@ -190,10 +219,7 @@ const Chat = React.forwardRef<ChatHandle, ChatProps>(function Chat(
               style={{ backgroundImage: `url(${backgroundUrl})` }}
             />
           )}
-          <div
-            ref={scrollRef}
-            className="flex-1 overflow-y-auto py-2 px-12 [scrollbar-width:thin] [scrollbar-color:rgba(255,255,255,0.1)_transparent] [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-[rgba(255,255,255,0.18)] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb:hover]:bg-[rgba(255,255,255,0.3)]"
-          >
+          <div ref={scrollRef} className="wa-scrollbar flex-1 overflow-y-auto px-12 py-2">
             <div ref={contentRef}>
               {children}
               {messages.length > 0 && <MessageList messages={messages} />}

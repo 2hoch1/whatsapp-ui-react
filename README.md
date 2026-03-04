@@ -25,14 +25,16 @@ npm install whatsapp-ui-react
 ```css
 /* global.css */
 @import 'tailwindcss';
-@import 'whatsapp-ui-react/css/dark.css';
+@import 'whatsapp-ui-react/css/natural.css';
 @import 'whatsapp-ui-react/css/preset.css';
 ```
 
-Use `light.css` instead for a light theme:
+Available themes: `natural` (default), `ocean`, `forest`, `rose`.
 
-```css
-@import 'whatsapp-ui-react/css/light.css';
+Use `theme="dark"` on `<Chat>` to switch to the dark variant of the loaded theme:
+
+```tsx
+<Chat theme="dark" ... />
 ```
 
 ## Usage

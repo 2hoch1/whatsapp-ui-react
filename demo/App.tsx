@@ -14,53 +14,61 @@ export function App(): React.JSX.Element {
 
       <main className="flex flex-1 items-center justify-center p-10">
         <div className="grid grid-cols-2 gap-6">
-          <div className="h-[450px] w-[550px] overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10">
-            <Chat
-              name="WorkBot 🤖"
-              subtitle="online"
-              avatarUrl="https://i.pravatar.cc/40?img=68"
-              className="h-full"
-              onReply={workBotReply}
-            >
-              <WorkBotHistory />
-            </Chat>
-          </div>
+          <Chat
+            name="WorkBot 🤖"
+            subtitle="online"
+            avatarUrl="https://i.pravatar.cc/40?img=68"
+            theme="dark"
+            colorScheme="natural"
+            width={550}
+            height={450}
+            className="overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10"
+            onReply={workBotReply}
+          >
+            <WorkBotHistory />
+          </Chat>
 
-          <div className="h-[450px] w-[550px] overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10">
-            <Chat
-              name="Sarah Johnson"
-              subtitle="last seen today at 10:35"
-              avatarUrl="https://i.pravatar.cc/40?img=47"
-              className="h-full"
-            >
-              <SarahHistory />
-            </Chat>
-          </div>
+          <Chat
+            name="Sarah Johnson"
+            subtitle="last seen today at 10:35"
+            avatarUrl="https://i.pravatar.cc/40?img=47"
+            theme="dark"
+            colorScheme="ocean"
+            width={550}
+            height={450}
+            className="overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10"
+          >
+            <SarahHistory />
+          </Chat>
 
-          <div className="h-[450px] w-[550px] overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10">
-            <Chat
-              name="Weekend BBQ 🔥"
-              subtitle="Me, Mats, Josh, Philipp, Ben, Mattis, Tobias, Aaron"
-              avatarUrl="https://i.pravatar.cc/40?img=3"
-              className="h-full"
-              locked
-              onReply={bbqReply}
-            >
-              <BbqHistory />
-            </Chat>
-          </div>
+          <Chat
+            name="Weekend BBQ 🔥"
+            subtitle="Me, Mats, Josh, Philipp, Ben, Mattis, Tobias, Aaron"
+            avatarUrl="https://i.pravatar.cc/40?img=3"
+            theme="dark"
+            colorScheme="forest"
+            width={550}
+            height={450}
+            className="overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10"
+            locked
+            onReply={bbqReply}
+          >
+            <BbqHistory />
+          </Chat>
 
-          <div className="h-[450px] w-[550px] overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10">
-            <Chat
-              name="Work Team 💼"
-              subtitle="Me, Kai, Hannah, Tom, WorkBot 🤖"
-              avatarUrl="https://i.pravatar.cc/40?img=12"
-              className="h-full"
-              locked
-            >
-              <WorkTeamHistory />
-            </Chat>
-          </div>
+          <Chat
+            name="Work Team 💼"
+            subtitle="Me, Kai, Hannah, Tom, WorkBot 🤖"
+            avatarUrl="https://i.pravatar.cc/40?img=12"
+            theme="dark"
+            colorScheme="rose"
+            width={550}
+            height={450}
+            className="overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10"
+            locked
+          >
+            <WorkTeamHistory />
+          </Chat>
         </div>
       </main>
     </div>

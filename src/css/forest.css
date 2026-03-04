@@ -1,0 +1,37 @@
+[data-wa-color='forest'] {
+  --color-wa-bg: #eaf3ec;
+  --color-wa-bubble-out: #c8e6c9;
+  --color-wa-bubble-in: #ffffff;
+  --color-wa-avatar: #b8daba;
+  --color-wa-input: #ffffff;
+  --color-wa-divider: #d0e8d2;
+  --color-wa-text: #1b3a22;
+  --color-wa-text-secondary: #4a7a52;
+  --color-wa-text-body: #2d5c36;
+  --color-wa-icon: #3d6e45;
+  --color-wa-teal: #2e7d32;
+  --color-wa-send: #388e3c;
+  --color-wa-hover: #2e7d32;
+  --color-wa-scrollbar: rgba(46, 125, 50, 0.15);
+  --color-wa-scrollbar-thumb: rgba(46, 125, 50, 0.25);
+  --color-wa-scrollbar-thumb-hover: rgba(46, 125, 50, 0.4);
+}
+
+[data-wa-color='forest'].dark {
+  --color-wa-bg: #0d1f10;
+  --color-wa-bubble-out: #1b3d1e;
+  --color-wa-bubble-in: #162718;
+  --color-wa-avatar: #1e3c22;
+  --color-wa-input: #131f14;
+  --color-wa-divider: #0f1a10;
+  --color-wa-text: #d4eed6;
+  --color-wa-text-secondary: #72b876;
+  --color-wa-text-body: #a8d8ab;
+  --color-wa-icon: #80c484;
+  --color-wa-teal: #66bb6a;
+  --color-wa-send: #4caf50;
+  --color-wa-hover: #43a047;
+  --color-wa-scrollbar: rgba(102, 187, 106, 0.1);
+  --color-wa-scrollbar-thumb: rgba(102, 187, 106, 0.2);
+  --color-wa-scrollbar-thumb-hover: rgba(102, 187, 106, 0.35);
+}

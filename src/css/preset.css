@@ -1,1 +1,23 @@
 @source '../dist';
+
+.wa-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-wa-scrollbar) transparent;
+}
+
+.wa-scrollbar::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+.wa-scrollbar::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.wa-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--color-wa-scrollbar-thumb);
+  border-radius: 9999px;
+}
+
+.wa-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-wa-scrollbar-thumb-hover);
+}
