@@ -15,7 +15,7 @@ function DayDivider({ className, date }: DayDividerProps): React.JSX.Element {
 
   return (
     <div className={cn('flex justify-center py-3', className)}>
-      <span className="rounded-[0.325rem] bg-[#182229] px-3 py-1 text-[13px] font-medium text-[#8696a0] shadow-sm">
+      <span className="rounded-[0.325rem] bg-wa-divider px-3 py-1 text-[13px] font-medium text-wa-text-secondary shadow-sm">
         {displayDate}
       </span>
     </div>

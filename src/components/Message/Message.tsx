@@ -61,7 +61,7 @@ function Message({
   const isOut = direction === 'out'
 
   const TimeRow = (): React.JSX.Element => (
-    <span className="flex items-center gap-0.5 text-xs font-medium text-[#8696a0]">
+    <span className="flex items-center gap-0.5 text-xs font-medium text-wa-text-secondary">
       {time}
       {isOut && status !== undefined && <StatusIcon status={status} />}
     </span>
@@ -73,7 +73,7 @@ function Message({
         aria-hidden="true"
         className={cn(
           'pointer-events-none absolute top-0',
-          isOut ? '-right-2 text-[#144d37]' : '-left-2 scale-x-[-1] text-[#202c33]'
+          isOut ? '-right-2 text-wa-bubble-out' : '-left-2 scale-x-[-1] text-wa-bubble-in'
         )}
       >
         <BubbleTailIcon />
@@ -84,7 +84,7 @@ function Message({
     <div
       className={cn(
         'relative w-fit rounded-[0.525rem] px-3 py-1.5 shadow-md',
-        isOut ? 'bg-[#144d37] text-[#e9edef]' : 'bg-[#202c33] text-[#e9edef]',
+        isOut ? 'bg-wa-bubble-out text-wa-text' : 'bg-wa-bubble-in text-wa-text',
         top && isOut && 'rounded-tr-none',
         top && !isOut && 'rounded-tl-none'
       )}
@@ -103,7 +103,7 @@ function Message({
       <div
         className={cn(
           'mt-[5px] self-end rounded-full px-1.5 py-0.5',
-          isOut ? 'bg-[#144d37]' : 'bg-[#202c33]'
+          isOut ? 'bg-wa-bubble-out' : 'bg-wa-bubble-in'
         )}
       >
         <TimeRow />
@@ -133,13 +133,13 @@ function Message({
       >
         {top && group && !isOut && (
           <span
-            className="absolute -left-10 top-2 flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#2a3942]"
+            className="absolute -left-10 top-2 flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-wa-avatar"
             aria-hidden="true"
           >
             {avatarUrl ? (
               <img src={avatarUrl} alt="" className="size-full object-cover" />
             ) : (
-              <AvatarPlaceholderIcon className="size-5 text-[#8696a0]" />
+              <AvatarPlaceholderIcon className="size-5 text-wa-text-secondary" />
             )}
           </span>
         )}

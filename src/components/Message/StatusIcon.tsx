@@ -20,7 +20,7 @@ function StatusIcon({ status, className }: StatusIconProps): React.JSX.Element {
   }
   return (
     <StatusDoubleCheckIcon
-      className={cn('size-4', status === 'read' && 'text-[#53bdeb]', className)}
+      className={cn('size-4', status === 'read' && 'text-wa-teal', className)}
     />
   )
 }

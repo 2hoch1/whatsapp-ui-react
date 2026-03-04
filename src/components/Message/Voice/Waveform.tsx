@@ -71,7 +71,7 @@ function Waveform({ bars, progress, isOut, hasPlayed, seek }: WaveformProps): Re
         aria-hidden="true"
         className={cn(
           'pointer-events-none absolute top-1/2 size-3 -translate-x-1/2 -translate-y-1/2 rounded-full',
-          hasPlayed || isOut ? 'bg-[#53bdeb]' : 'bg-[#8696a0]'
+          hasPlayed || isOut ? 'bg-wa-teal' : 'bg-wa-text-secondary'
         )}
         style={{ left: `${progress * 100}%` }}
       />

@@ -106,7 +106,7 @@ function Inputfield({
             placeholder={placeholder}
             rows={1}
             className={cn(
-              'min-h-5 w-full resize-none bg-transparent px-1 py-0 text-sm text-[#d1d7db] outline-none placeholder:font-medium placeholder:text-[#aebac1]/70',
+              'min-h-5 w-full resize-none bg-transparent px-1 py-0 text-sm text-wa-text-body outline-none placeholder:font-medium placeholder:text-wa-icon/70',
               textareaClassName
             )}
           />
