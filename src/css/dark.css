@@ -1,0 +1,31 @@
+@theme {
+  --color-wa-bg: #161717;
+  --color-wa-bubble-out: #144d37;
+  --color-wa-bubble-in: #202c33;
+  --color-wa-avatar: #2a3942;
+  --color-wa-input: #242626;
+  --color-wa-divider: #182229;
+  --color-wa-text: #e9edef;
+  --color-wa-text-secondary: #8696a0;
+  --color-wa-text-body: #d1d7db;
+  --color-wa-icon: #aebac1;
+  --color-wa-teal: #53bdeb;
+  --color-wa-send: #21c063;
+  --color-wa-hover: #00a884;
+}
+
+[data-wa-theme='light'] {
+  --color-wa-bg: #f0f2f5;
+  --color-wa-bubble-out: #d9fdd3;
+  --color-wa-bubble-in: #ffffff;
+  --color-wa-avatar: #dfe5e7;
+  --color-wa-input: #ffffff;
+  --color-wa-divider: #e9edef;
+  --color-wa-text: #111b21;
+  --color-wa-text-secondary: #667781;
+  --color-wa-text-body: #3b4a54;
+  --color-wa-icon: #54656f;
+  --color-wa-teal: #0a7040;
+  --color-wa-send: #00a884;
+  --color-wa-hover: #008f72;
+}

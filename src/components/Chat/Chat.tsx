@@ -67,6 +67,12 @@ export interface ChatProps {
   onCameraClick?: () => void
   /** Handler for the microphone button in the input bar. */
   onMicClick?: () => void
+  /**
+   * Visual colour theme for the chat window.
+   * - `'dark'` (default): WhatsApp dark style.
+   * - `'light'`: WhatsApp light style.
+   */
+  theme?: 'dark' | 'light'
 }
 
 /**
@@ -97,6 +103,7 @@ const Chat = React.forwardRef<ChatHandle, ChatProps>(function Chat(
     onAttachClick,
     onCameraClick,
     onMicClick,
+    theme,
   }: ChatProps,
   ref
 ): React.JSX.Element {
@@ -167,8 +174,9 @@ const Chat = React.forwardRef<ChatHandle, ChatProps>(function Chat(
   return (
     <ChatReplyContext.Provider value={{ messages, sendMessage, addMessage, provided: true }}>
       <div
-        className={cn('flex h-full min-h-0 flex-col', isDefaultBg ? 'bg-[#161717]' : '', className)}
+        className={cn('flex h-full min-h-0 flex-col', isDefaultBg ? 'bg-wa-bg' : '', className)}
         style={isDefaultBg ? undefined : bgStyle}
+        {...(theme ? { 'data-wa-theme': theme } : {})}
       >
         <ChatHeader
           name={name}

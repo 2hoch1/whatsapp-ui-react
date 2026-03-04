@@ -1,0 +1,5 @@
+@import 'tailwindcss/utilities';
+@source './components';
+@source './hooks';
+@source './icons';
+@import './css/dark.css';

@@ -32,15 +32,12 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
-    "./styles": {
-      "style": "./dist/assets/whatsapp-ui-react.css",
-      "default": "./dist/assets/whatsapp-ui-react.css"
-    },
-    "./css/*": "./css/*.css"
+    "./style.css": "./dist/style.css",
+    "./css/*": "./src/css/*"
   },
   "files": [
     "dist",
-    "css"
+    "src/css"
   ],
   "engines": {
     "node": ">=18"

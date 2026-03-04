@@ -1,2 +1,4 @@
 @import 'tailwindcss';
-@source '../src';
+@import '../src/css/dark.css';
+@import '../src/css/preset.css';
+@source '../demo';

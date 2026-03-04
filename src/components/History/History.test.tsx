@@ -1,10 +1,13 @@
 import { render, screen } from '@testing-library/react'
-import { describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Message } from '../Message/Message'
 import { Text } from '../Message/Text/Text'
 import { History } from './History'
 
 describe('History', () => {
+  afterEach(() => {
+    vi.useRealTimers()
+  })
   it('renders message content', () => {
     render(
       <History>
@@ -99,6 +102,10 @@ describe('History', () => {
   })
 
   it('inserts a day divider between messages on different calendar days', () => {
+    // Pin "today" to 2026-03-03 so 2026-02-25 is exactly 6 days ago ("Wednesday")
+    vi.useFakeTimers()
+    vi.setSystemTime(new Date('2026-03-03T12:00:00Z'))
+
     render(
       <History>
         <Message
@@ -126,6 +133,8 @@ describe('History', () => {
     expect(screen.getByText('today')).toBeInTheDocument()
     // getDayDivider labels: Wednesday (2026-02-25) and Today (2026-03-03).
     expect(screen.getByText('Wednesday')).toBeInTheDocument()
+
+    vi.useRealTimers()
   })
 
   it('applies className wrapper when provided', () => {
