@@ -20,6 +20,21 @@ npm install whatsapp-ui-react
 
 **Peer dependencies:** React 18+ and TailwindCSS v4.
 
+## Setup
+
+```css
+/* global.css */
+@import 'tailwindcss';
+@import 'whatsapp-ui-react/css/dark.css';
+@import 'whatsapp-ui-react/css/preset.css';
+```
+
+Use `light.css` instead for a light theme:
+
+```css
+@import 'whatsapp-ui-react/css/light.css';
+```
+
 ## Usage
 
 ### Chat
@@ -175,6 +190,7 @@ Set `locked` to disable sending while still allowing typing:
 | `onAttachClick`      | `() => void`                      |                      | Attach button click handler                                                                                                              |
 | `onCameraClick`      | `() => void`                      |                      | Camera button click handler                                                                                                              |
 | `onMicClick`         | `() => void`                      |                      | Mic button click handler                                                                                                                 |
+| `theme`              | `'dark' \| 'light'`               |                      | Sets `data-wa-theme` theme for the chat                                                                                                  |
 
 ## License
 
