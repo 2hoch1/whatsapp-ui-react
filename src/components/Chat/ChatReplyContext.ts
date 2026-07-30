@@ -2,7 +2,7 @@ import React from 'react'
 import type { GroupedMessage } from './MessageList'
 
 /** Options for {@link ChatReplyContextValue.addMessage}. */
-export interface AddMessageOptions {
+interface AddMessageOptions {
   /** The React node to render as the new message. */
   node: React.ReactNode
   /** `senderId` stored on the resulting {@link GroupedMessage}. @defaultValue `'me'` */

@@ -23,7 +23,7 @@ function Voice({ src, duration, avatarUrl: avatarProp }: VoiceProps): React.JSX.
   const { audioRef, playing, progress, remaining, totalDuration, toggle, seek } =
     useAudioPlayer(src)
 
-  const [bars, setBars] = useState<number[]>(Array<number>(BAR_COUNT).fill(0))
+  const [bars, setBars] = useState<number[]>(() => Array<number>(BAR_COUNT).fill(0))
   const [hasPlayed, setHasPlayed] = useState(false)
 
   useEffect(() => {

@@ -21,8 +21,13 @@ function MessageList({ className, messages }: MessageListProps): React.JSX.Eleme
       dayDate !== null &&
       (!previousGroup?.dayDate || !isSameCalendarDay(dayDate, previousGroup.dayDate))
 
+    // Use a stable key: combine senderId, first message ID, and day timestamp
+    const firstMsgId = group.messages[0]?.id ?? ''
+    const dayKey = dayDate?.getTime() ?? index
+    const groupKey = `${group.senderId}-${firstMsgId}-${dayKey}`
+
     return (
-      <React.Fragment key={`${group.senderId}-${index}`}>
+      <React.Fragment key={groupKey}>
         {shouldRenderDivider && dayDate !== null && <DayDivider date={dayDate} />}
         {group.messages.map((message, msgIndex) => {
           const node =

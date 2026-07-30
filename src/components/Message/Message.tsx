@@ -5,6 +5,22 @@ import type { MessageDirection, MessageStatus } from './MessageContext'
 import { MessageContext } from './MessageContext'
 import { StatusIcon } from './StatusIcon'
 
+/** TimeRow component for displaying message time and status. */
+interface TimeRowProps {
+  time?: string
+  isOut: boolean
+  status?: MessageStatus
+}
+
+function TimeRow({ time, isOut, status }: TimeRowProps): React.JSX.Element {
+  return (
+    <span className="flex items-center gap-0.5 text-xs font-medium text-wa-text-secondary">
+      {time}
+      {isOut && status !== undefined && <StatusIcon status={status} />}
+    </span>
+  )
+}
+
 /** Props for the {@link Message} component. */
 export interface MessageProps {
   /** `'in'` for received messages, `'out'` for sent. */
@@ -46,6 +62,28 @@ export interface MessageProps {
   timestamp?: string | Date
 }
 
+/** Tail decoration for message bubbles. */
+interface TailProps {
+  top: boolean
+  isOut: boolean
+}
+
+function Tail({ top, isOut }: TailProps): React.JSX.Element | null {
+  if (!top) return null
+
+  return (
+    <span
+      aria-hidden="true"
+      className={cn(
+        'pointer-events-none absolute top-0',
+        isOut ? '-right-2 text-wa-bubble-out' : '-left-2 scale-x-[-1] text-wa-bubble-in'
+      )}
+    >
+      <BubbleTailIcon />
+    </span>
+  )
+}
+
 function Message({
   direction,
   top = false,
@@ -60,26 +98,6 @@ function Message({
 }: MessageProps): React.JSX.Element {
   const isOut = direction === 'out'
 
-  const TimeRow = (): React.JSX.Element => (
-    <span className="flex items-center gap-0.5 text-xs font-medium text-wa-text-secondary">
-      {time}
-      {isOut && status !== undefined && <StatusIcon status={status} />}
-    </span>
-  )
-
-  const Tail = (): React.JSX.Element | null =>
-    top ? (
-      <span
-        aria-hidden="true"
-        className={cn(
-          'pointer-events-none absolute top-0',
-          isOut ? '-right-2 text-wa-bubble-out' : '-left-2 scale-x-[-1] text-wa-bubble-in'
-        )}
-      >
-        <BubbleTailIcon />
-      </span>
-    ) : null
-
   const renderNeutral = (): React.JSX.Element => (
     <div
       className={cn(
@@ -89,10 +107,10 @@ function Message({
         top && !isOut && 'rounded-tl-none'
       )}
     >
-      <Tail />
+      <Tail top={top} isOut={isOut} />
       {children}
       <div className="pointer-events-none absolute bottom-1 right-2">
-        <TimeRow />
+        <TimeRow time={time} isOut={isOut} status={status} />
       </div>
     </div>
   )
@@ -106,7 +124,7 @@ function Message({
           isOut ? 'bg-wa-bubble-out' : 'bg-wa-bubble-in'
         )}
       >
-        <TimeRow />
+        <TimeRow time={time} isOut={isOut} status={status} />
       </div>
     </div>
   )

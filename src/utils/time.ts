@@ -1,8 +1,3 @@
-/** Returns `time` as-is, or the current local time formatted as `HH:MM`. */
-export function getDisplayTime(time?: string): string {
-  return time ?? new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-}
-
 /**
  * Returns a human-readable date label for a day-divider:
  * `'Today'`, `'Yesterday'`, weekday name, or `D.M.YY`.
