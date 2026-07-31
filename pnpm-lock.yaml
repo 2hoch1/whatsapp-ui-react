@@ -147,6 +147,9 @@ importers:
       cnfast:
         specifier: ^0.1.0
         version: 0.1.0
+      lucide-react:
+        specifier: ^0.545.0
+        version: 0.545.0(react@19.2.8)
       react:
         specifier: ^19.0.0
         version: 19.2.8
