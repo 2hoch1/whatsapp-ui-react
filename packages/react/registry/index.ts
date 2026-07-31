@@ -185,6 +185,38 @@ export const components: RegistryItem[] = [
     registryDependencies: ['skeleton'],
     files: [component('placeholder')],
   },
+  {
+    name: 'reaction-menu',
+    type: 'registry:component',
+    title: 'Reaction Menu',
+    description: 'Quick emoji reaction picker anchored to a message.',
+    registryDependencies: ['popover'],
+    files: [component('reaction-menu')],
+  },
+  {
+    name: 'contact-menu',
+    type: 'registry:component',
+    title: 'Contact Menu',
+    description: 'Contact chooser for sharing a contact card into a conversation.',
+    registryDependencies: ['popover', 'avatar', 'separator'],
+    files: [component('contact-menu')],
+  },
+  {
+    name: 'poll-menu',
+    type: 'registry:component',
+    title: 'Poll Menu',
+    description: 'Composer popover for building a poll before sending it.',
+    registryDependencies: ['popover', 'button', 'input'],
+    files: [component('poll-menu')],
+  },
+  {
+    name: 'expression-picker',
+    type: 'registry:component',
+    title: 'Expression Picker',
+    description: 'Tabbed emoji, sticker and GIF picker for the composer.',
+    registryDependencies: ['popover', 'tabs', 'input', 'scroll-area'],
+    files: [component('expression-picker')],
+  },
 ];
 
 export const registryItems: RegistryItem[] = [...primitives, ...components];

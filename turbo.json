@@ -1,5 +1,6 @@
 {
   "$schema": "https://turborepo.dev/schema.json",
+  "globalEnv": ["NEXT_PUBLIC_SITE_URL", "WHATSAPP_UI_REGISTRY"],
   "tasks": {
     "build": {
       "dependsOn": ["^build", "^registry:build"],
