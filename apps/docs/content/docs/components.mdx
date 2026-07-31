@@ -1,41 +1,149 @@
 ---
 title: Components
-description: The component catalogue.
+description: Every component in the library, with a live preview and its install command.
 ---
 
-Every component below is available both from the npm package and from the registry.
+Each component below is available two ways: import it from the `whatsapp-ui-react` package, or
+copy the source into your project with the install command under the preview. Both ship the same
+file, so switching later costs nothing.
 
-## Message
+## Primitives
 
-A single chat message: avatar, header, content and footer, aligned to either side of the
-thread.
+The generic building blocks. Everything else composes these.
 
-```tsx
-import { Message, MessageAvatar, MessageContent } from 'whatsapp-ui-react';
+### Bubble
 
-<Message align="end">
-  <MessageContent>Hey, are we still on for tonight?</MessageContent>
-</Message>;
-```
+The rounded container a message body sits in. `variant` controls the surface, and
+`BubbleReactions` overlays a reaction strip on the edge.
 
-<InstallCommand name="message" />
+<ComponentPreview name="bubble" />
 
-## Bubble
+### Message
 
-The rounded container a message body sits in, with variants for incoming, outgoing and
-system messages, plus a reactions strip.
+A message row: avatar, header, content and footer as separate slots. `align` flips the whole row
+for outgoing messages.
 
-<InstallCommand name="bubble" />
+<ComponentPreview name="message" />
 
-## Message scroller
+### Message scroller
 
-A scroll container that keeps the newest message pinned to the bottom, restores position on
-resize, and exposes a jump-to-latest button.
+A scroll container that keeps the newest message pinned to the bottom. `MessageScrollerDays`
+takes a flat message list and inserts a day divider whenever the calendar day changes.
 
-<InstallCommand name="message-scroller" />
+<ComponentPreview name="message-scroller" />
 
-## Chat
+## Chat shell
 
-The full shell: header, scrollable content and composer footer.
+### Chat
 
-<InstallCommand name="chat" />
+Header, scrollable content and composer footer. `colorScheme` picks one of the four palettes and
+`theme` toggles dark mode.
+
+<ComponentPreview name="chat" />
+
+### Chat composer
+
+The message field and its actions. Enter sends, Shift+Enter inserts a newline. The parts read
+their state from context, so they can be reordered or swapped freely.
+
+<ComponentPreview name="chat-composer" />
+
+## Message types
+
+### Text message
+
+Plain text, with an automatic oversized treatment for emoji-only messages. `SystemMessage`
+renders the centred notices such as encryption banners.
+
+<ComponentPreview name="text-message" />
+
+### Image message
+
+Photos and GIFs. With a `caption` the timestamp moves below the image; without one it overlays
+the bottom corner.
+
+<ComponentPreview name="image-message" />
+
+### Video message
+
+Inline player with an optional poster frame and running time.
+
+<ComponentPreview name="video-message" />
+
+### Audio message
+
+An audio file with a scrubber and remaining time.
+
+<ComponentPreview name="audio-message" />
+
+### Voice message
+
+A voice note. The waveform is decoded from the audio itself and falls back to a flat baseline
+when the file cannot be read.
+
+<ComponentPreview name="voice-message" />
+
+### Sticker message
+
+Rendered without bubble chrome, like emoji-only messages.
+
+<ComponentPreview name="sticker-message" />
+
+### Document message
+
+A file attachment. Pass `href` to turn the card into a download link.
+
+<ComponentPreview name="document-message" />
+
+### Contact message
+
+A shared contact card with an optional action button.
+
+<ComponentPreview name="contact-message" />
+
+### Location message
+
+A shared location. Supply `previewUrl` for a static map image; without one the card falls back to
+the coordinates.
+
+<ComponentPreview name="location-message" />
+
+### Poll message
+
+A poll with vote bars.
+
+<ComponentPreview name="poll-message" />
+
+## Menus and pickers
+
+### Expression picker
+
+Tabbed emoji, sticker and GIF picker for the composer.
+
+<ComponentPreview name="expression-picker" />
+
+### Reaction menu
+
+The quick reaction row shown when reacting to a message.
+
+<ComponentPreview name="reaction-menu" />
+
+### Contact menu
+
+Contact chooser for sharing a contact into a conversation.
+
+<ComponentPreview name="contact-menu" />
+
+### Poll menu
+
+Composer popover for building a poll before sending it.
+
+<ComponentPreview name="poll-menu" />
+
+## Utility
+
+### Placeholder
+
+The empty state shown where a conversation would be, before one is opened.
+
+<ComponentPreview name="placeholder" />

@@ -16,6 +16,11 @@ export function baseOptions(): BaseLayoutProps {
         url: '/docs/components',
         active: 'nested-url',
       },
+      {
+        text: 'Examples',
+        url: '/examples',
+        active: 'nested-url',
+      },
     ],
     githubUrl: 'https://github.com/2hoch1/whatsapp-ui-react',
   };
