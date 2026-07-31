@@ -39,3 +39,6 @@ pnpm-debug.log*
 
 # TypeScript incremental
 *.tsbuildinfo
+
+# turbo task logs
+turbo-*.log
