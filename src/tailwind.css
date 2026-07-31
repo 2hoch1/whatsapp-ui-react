@@ -1,6 +1,0 @@
-@import 'tailwindcss/utilities';
-@source './components';
-@source './hooks';
-@source './icons';
-@import './css/natural.css';
-@import './css/preset.css';
