@@ -46,7 +46,8 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "vitest run --passWithNoTests",
-    "registry:build": "shadcn build registry.json --output ../../apps/docs/public/r",
+    "registry:json": "tsx registry/build-registry-json.ts",
+    "registry:build": "pnpm registry:json && shadcn build registry.json --output ../../apps/docs/public/r",
     "clean": "rimraf dist css"
   },
   "dependencies": {
@@ -66,6 +67,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
+    "@types/node": "^22.20.1",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "^5.0.0",
@@ -76,6 +78,7 @@
     "shadcn": "^4.16.0",
     "tailwindcss": "^4.2.4",
     "tsdown": "^0.22.14",
+    "tsx": "^4.23.1",
     "typescript": "^6.0.3",
     "vite": "8.0.13",
     "vitest": "^4.1.6"

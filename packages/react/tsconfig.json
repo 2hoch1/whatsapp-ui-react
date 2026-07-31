@@ -1,6 +1,7 @@
 {
   "extends": "@whatsapp-ui/typescript/react-library",
   "compilerOptions": {
+    "types": ["node"],
     "paths": {
       "@/components/ui/*": ["./src/ui/components/*"],
       "@/components/*": ["./src/ui/*"],

@@ -1,0 +1,240 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "whatsapp-ui",
+  "homepage": "https://github.com/2hoch1/whatsapp-ui-react",
+  "items": [
+    {
+      "name": "bubble",
+      "type": "registry:ui",
+      "title": "Bubble",
+      "description": "The rounded container a message body sits in, with a reactions strip.",
+      "dependencies": ["class-variance-authority"],
+      "files": [
+        {
+          "path": "src/ui/components/bubble.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "message",
+      "type": "registry:ui",
+      "title": "Message",
+      "description": "A chat message row: avatar, header, content and footer.",
+      "files": [
+        {
+          "path": "src/ui/components/message.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "message-scroller",
+      "type": "registry:ui",
+      "title": "Message Scroller",
+      "description": "Scroll container that pins the newest message and offers a jump-to-latest button.",
+      "dependencies": ["@shadcn/react"],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "src/ui/components/message-scroller.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "direction",
+      "type": "registry:ui",
+      "title": "Direction",
+      "description": "Text-direction provider for right-to-left layouts.",
+      "dependencies": ["@base-ui/react"],
+      "files": [
+        {
+          "path": "src/ui/components/direction.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "chat",
+      "type": "registry:component",
+      "title": "Chat",
+      "description": "The full chat shell: header, scrollable content and composer footer.",
+      "registryDependencies": ["message", "message-scroller", "chat-composer"],
+      "files": [
+        {
+          "path": "src/ui/chat.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "chat-composer",
+      "type": "registry:component",
+      "title": "Chat Composer",
+      "description": "Message input with attachment, expression and voice actions.",
+      "registryDependencies": ["button", "input-group"],
+      "files": [
+        {
+          "path": "src/ui/chat-composer.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "text-message",
+      "type": "registry:component",
+      "title": "Text Message",
+      "description": "Plain text and system message bodies.",
+      "registryDependencies": ["bubble", "message"],
+      "files": [
+        {
+          "path": "src/ui/text-message.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "image-message",
+      "type": "registry:component",
+      "title": "Image Message",
+      "description": "Image and GIF message bodies.",
+      "registryDependencies": ["bubble", "aspect-ratio"],
+      "files": [
+        {
+          "path": "src/ui/image-message.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "video-message",
+      "type": "registry:component",
+      "title": "Video Message",
+      "description": "Video message body with an inline player.",
+      "registryDependencies": ["bubble", "aspect-ratio"],
+      "files": [
+        {
+          "path": "src/ui/video-message.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "audio-message",
+      "type": "registry:component",
+      "title": "Audio Message",
+      "description": "Audio file message with playback controls.",
+      "registryDependencies": ["bubble", "button", "progress"],
+      "files": [
+        {
+          "path": "src/ui/audio-message.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/hooks/use-audio-player.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "voice-message",
+      "type": "registry:component",
+      "title": "Voice Message",
+      "description": "Voice note with a waveform scrubber.",
+      "registryDependencies": ["bubble", "button"],
+      "files": [
+        {
+          "path": "src/ui/voice-message.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/hooks/use-audio-player.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/lib/audio.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "document-message",
+      "type": "registry:component",
+      "title": "Document Message",
+      "description": "File attachment message.",
+      "registryDependencies": ["bubble", "button"],
+      "files": [
+        {
+          "path": "src/ui/document-message.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "contact-message",
+      "type": "registry:component",
+      "title": "Contact Message",
+      "description": "Shared contact card message.",
+      "registryDependencies": ["bubble", "avatar", "button"],
+      "files": [
+        {
+          "path": "src/ui/contact-message.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "location-message",
+      "type": "registry:component",
+      "title": "Location Message",
+      "description": "Shared location message with a map preview.",
+      "registryDependencies": ["bubble", "aspect-ratio"],
+      "files": [
+        {
+          "path": "src/ui/location-message.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "poll-message",
+      "type": "registry:component",
+      "title": "Poll Message",
+      "description": "Poll message with vote bars.",
+      "registryDependencies": ["bubble", "progress"],
+      "files": [
+        {
+          "path": "src/ui/poll-message.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "sticker-message",
+      "type": "registry:component",
+      "title": "Sticker Message",
+      "description": "Sticker message body.",
+      "registryDependencies": ["bubble"],
+      "files": [
+        {
+          "path": "src/ui/sticker-message.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "placeholder",
+      "type": "registry:component",
+      "title": "Placeholder",
+      "description": "Empty-state placeholder for an unopened conversation.",
+      "registryDependencies": ["skeleton"],
+      "files": [
+        {
+          "path": "src/ui/placeholder.tsx",
+          "type": "registry:component"
+        }
+      ]
+    }
+  ]
+}
