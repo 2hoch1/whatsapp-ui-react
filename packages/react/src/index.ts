@@ -15,8 +15,6 @@ export * from '@/ui/components/context-menu';
 export * from '@/ui/components/direction';
 export * from '@/ui/components/input';
 export * from '@/ui/components/input-group';
-export * from '@/ui/components/message';
-export * from '@/ui/components/message-scroller';
 export * from '@/ui/components/popover';
 export * from '@/ui/components/progress';
 export * from '@/ui/components/scroll-area';
@@ -24,6 +22,28 @@ export * from '@/ui/components/separator';
 export * from '@/ui/components/skeleton';
 export * from '@/ui/components/tabs';
 export * from '@/ui/components/tooltip';
+
+/* `message` and `message-scroller` re-export their primitives, so they are not listed above. */
+export * from '@/ui/message';
+export * from '@/ui/message-scroller';
+
+export * from '@/ui/chat';
+export * from '@/ui/chat-composer';
+export * from '@/ui/text-message';
+export * from '@/ui/image-message';
+export * from '@/ui/video-message';
+export * from '@/ui/audio-message';
+export * from '@/ui/voice-message';
+export * from '@/ui/sticker-message';
+export * from '@/ui/document-message';
+export * from '@/ui/contact-message';
+export * from '@/ui/location-message';
+export * from '@/ui/poll-message';
+export * from '@/ui/placeholder';
+export * from '@/ui/contact-menu';
+export * from '@/ui/poll-menu';
+export * from '@/ui/reaction-menu';
+export * from '@/ui/expression-picker';
 
 export * from '@/icons';
 
