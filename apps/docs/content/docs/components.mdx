@@ -1,0 +1,41 @@
+---
+title: Components
+description: The component catalogue.
+---
+
+Every component below is available both from the npm package and from the registry.
+
+## Message
+
+A single chat message: avatar, header, content and footer, aligned to either side of the
+thread.
+
+```tsx
+import { Message, MessageAvatar, MessageContent } from 'whatsapp-ui-react';
+
+<Message align="end">
+  <MessageContent>Hey, are we still on for tonight?</MessageContent>
+</Message>;
+```
+
+<InstallCommand name="message" />
+
+## Bubble
+
+The rounded container a message body sits in, with variants for incoming, outgoing and
+system messages, plus a reactions strip.
+
+<InstallCommand name="bubble" />
+
+## Message scroller
+
+A scroll container that keeps the newest message pinned to the bottom, restores position on
+resize, and exposes a jump-to-latest button.
+
+<InstallCommand name="message-scroller" />
+
+## Chat
+
+The full shell: header, scrollable content and composer footer.
+
+<InstallCommand name="chat" />

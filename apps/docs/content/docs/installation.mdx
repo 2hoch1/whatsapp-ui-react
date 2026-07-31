@@ -1,0 +1,38 @@
+---
+title: Installation
+description: Add whatsapp-ui-react to a React project.
+---
+
+## Requirements
+
+- React 19
+- Tailwind CSS v4
+
+## Package install
+
+```bash
+npm install whatsapp-ui-react
+```
+
+Then load a palette in your global stylesheet:
+
+```css
+@import 'tailwindcss';
+@import 'whatsapp-ui-react/css/natural.css';
+```
+
+Tailwind needs to see the component classes to generate them. Add the package to your
+`@source` list:
+
+```css
+@source '../node_modules/whatsapp-ui-react/dist';
+```
+
+## CLI install
+
+If you would rather own the source, add components individually. The CLI writes them into
+your own `components/ui` directory and installs any dependencies it needs.
+
+```bash
+npx shadcn@latest add https://whatsapp-ui.dev/r/message.json
+```

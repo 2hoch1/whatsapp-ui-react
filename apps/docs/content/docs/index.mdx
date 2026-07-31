@@ -1,0 +1,52 @@
+---
+title: Introduction
+description: React chat components with a WhatsApp Web-inspired UI.
+---
+
+`whatsapp-ui-react` gives you the building blocks of a WhatsApp-style chat: message bubbles,
+a virtualised message scroller, a composer, and the message content types that go inside them.
+
+There are two ways to use it.
+
+## As a package
+
+Install it and import the components. Nothing is copied into your codebase, so upgrades come
+through npm.
+
+```bash
+npm install whatsapp-ui-react
+```
+
+```tsx
+import { Chat, Message, TextMessage } from 'whatsapp-ui-react';
+```
+
+Import a colour theme once, anywhere in your app:
+
+```ts
+import 'whatsapp-ui-react/css/natural.css';
+```
+
+## As source
+
+Copy a component into your project with the shadcn CLI. You own the file afterwards and can
+edit it freely.
+
+```bash
+npx shadcn@latest add https://whatsapp-ui.dev/r/chat.json
+```
+
+Both paths ship the same source: the registry is generated from `packages/react`, so a
+component behaves identically whether you installed it or copied it.
+
+## Theming
+
+Components are styled with Tailwind CSS v4 and read their colours from `--color-wa-*` custom
+properties. Four palettes ship with the package: `natural` (the default), `forest`, `ocean`
+and `rose`. Switch palette with `data-wa-color`, and dark mode with the `dark` class.
+
+```tsx
+<div data-wa-color="forest" className="dark">
+  <Chat />
+</div>
+```

@@ -1,0 +1,13 @@
+@import 'tailwindcss';
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
+
+@import 'whatsapp-ui-react/css/natural.css';
+@import 'whatsapp-ui-react/css/forest.css';
+@import 'whatsapp-ui-react/css/ocean.css';
+@import 'whatsapp-ui-react/css/rose.css';
+@import 'whatsapp-ui-react/css/preset.css';
+
+@source '../../../packages/react/src';
+@source '../app';
+@source '../components';
