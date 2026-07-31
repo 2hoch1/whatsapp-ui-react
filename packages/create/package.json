@@ -1,0 +1,51 @@
+{
+  "name": "whatsapp-ui-create",
+  "version": "0.1.0",
+  "description": "CLI for adding whatsapp-ui-react components to a project, built on the shadcn CLI.",
+  "keywords": [
+    "cli",
+    "shadcn",
+    "whatsapp",
+    "react"
+  ],
+  "homepage": "https://github.com/2hoch1/whatsapp-ui-react#readme",
+  "bugs": {
+    "url": "https://github.com/2hoch1/whatsapp-ui-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2hoch1/whatsapp-ui-react.git",
+    "directory": "packages/create"
+  },
+  "license": "Apache-2.0",
+  "type": "module",
+  "bin": {
+    "whatsapp-ui-create": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --passWithNoTests",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "shadcn": "^4.16.0"
+  },
+  "devDependencies": {
+    "@whatsapp-ui/eslint": "workspace:*",
+    "@whatsapp-ui/typescript": "workspace:*",
+    "@types/node": "^22.0.0",
+    "rimraf": "^6.1.3",
+    "tsdown": "^0.22.14",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.6"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

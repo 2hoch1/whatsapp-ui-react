@@ -1,12 +1,12 @@
 {
   "recommendations": [
     "dbaeumer.vscode-eslint",
+    "davidanson.vscode-markdownlint",
     "esbenp.prettier-vscode",
     "ms-vscode.vscode-typescript-next",
+    "bradlc.vscode-tailwindcss",
     "vitest.explorer",
     "eamodio.gitlens",
-    "github.copilot",
-    "github.copilot-chat",
     "editorconfig.editorconfig"
   ]
 }

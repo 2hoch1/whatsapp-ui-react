@@ -1,0 +1,29 @@
+{
+  "name": "@whatsapp-ui/eslint",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./base.js",
+    "./base": "./base.js",
+    "./react-internal": "./react-internal.js",
+    "./next": "./next.js"
+  },
+  "scripts": {
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@eslint/js": "^9.39.4",
+    "@next/eslint-plugin-next": "^16.2.6",
+    "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-turbo": "^2.5.4",
+    "globals": "^16.1.0",
+    "typescript-eslint": "^8.59.2"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.3"
+  }
+}

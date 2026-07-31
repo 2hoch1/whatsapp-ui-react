@@ -1,0 +1,10 @@
+{
+  "extends": "@whatsapp-ui/typescript/react-library",
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src", "registry"],
+  "exclude": ["node_modules", "dist"]
+}

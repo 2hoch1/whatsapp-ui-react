@@ -1,0 +1,36 @@
+{
+  "name": "@whatsapp-ui/docs",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "postinstall": "fumadocs-mdx"
+  },
+  "dependencies": {
+    "whatsapp-ui-react": "workspace:*",
+    "fumadocs-core": "^16.14.0",
+    "fumadocs-mdx": "^15.2.1",
+    "fumadocs-ui": "^16.14.0",
+    "lucide-react": "^0.545.0",
+    "next": "^16.2.6",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@whatsapp-ui/eslint": "workspace:*",
+    "@whatsapp-ui/typescript": "workspace:*",
+    "@tailwindcss/postcss": "^4.2.4",
+    "@types/mdx": "^2.0.13",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.2.4",
+    "typescript": "^6.0.3"
+  }
+}

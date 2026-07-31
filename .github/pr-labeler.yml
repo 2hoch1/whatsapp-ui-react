@@ -1,18 +1,25 @@
 api changes:
   - changed-files:
       - any-glob-to-any-file:
-          - src/**
-          - src/*
+          - apps/*/src/**
+          - apps/*/src/*
+          - packages/*/src/**
+          - packages/*/src/*
 dependencies:
   - changed-files:
       - any-glob-to-any-file:
           - package.json
-          - package-lock.json
+          - packages/*/package.json
+          - apps/*/package.json
+          - pnpm-lock.yaml
+          - pnpm-workspace.yaml
 tests:
   - changed-files:
       - any-glob-to-any-file:
-          - tests/*
-          - tests/**/*
+          - apps/*/tests/*
+          - apps/*/tests/**/*
+          - packages/*/tests/*
+          - packages/*/tests/**/*
 docs:
   - changed-files:
       - any-glob-to-any-file:
@@ -33,19 +40,23 @@ typings:
   - changed-files:
       - any-glob-to-any-file:
           - '**/*.d.ts'
-          - src/**/*.ts
+          - apps/*/src/**/*.ts
+          - packages/*/src/**/*.ts
 build:
   - changed-files:
       - any-glob-to-any-file:
           - tsconfig*.json
+          - apps/*/tsconfig*.json
+          - packages/*/tsconfig*.json
+          - next.config.*
+          - apps/*/next.config.*
           - eslint.config.js
-          - .prettierrc
+          - prettier.config.js
           - .prettierignore
           - .editorconfig
           - .gitignore
           - .gitattributes
-          - .commitlintrc.cjs
-          - vitest.config.ts
+          - .commitlintrc.ts
 chore:
   - changed-files:
       - any-glob-to-any-file:

@@ -1,0 +1,14 @@
+{
+  "extends": "@whatsapp-ui/typescript/base",
+  "compilerOptions": {
+    "noEmit": true,
+    "module": "ESNext",
+    "lib": ["ESNext"],
+    "types": ["node"],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}
