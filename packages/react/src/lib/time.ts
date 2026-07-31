@@ -2,10 +2,10 @@
  * Returns a human-readable date label for a day-divider:
  * `'Today'`, `'Yesterday'`, weekday name, or `D.M.YY`.
  */
-export function getDisplayDate(date?: string): string {
+export function getDisplayDate(date?: Date | string): string {
   if (!date) return new Date().toLocaleDateString();
 
-  const d = new Date(date);
+  const d = date instanceof Date ? date : new Date(date);
   const now = new Date();
 
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());

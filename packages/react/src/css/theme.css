@@ -1,0 +1,67 @@
+/**
+ * Bridges the WhatsApp palette onto the shadcn semantic tokens.
+ *
+ * Components are written against the standard tokens (bg-primary, bg-muted, ...) so a component
+ * downloaded from the registry drops into any shadcn project unchanged. Import this file next to
+ * a palette (natural.css, forest.css, ...) to give those tokens the WhatsApp look. Because the
+ * mapping is by var() reference, switching palette or toggling `.dark` retints everything without
+ * redefining anything here.
+ */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.525rem;
+
+  --background: var(--color-wa-bg);
+  --foreground: var(--color-wa-text);
+
+  /* Incoming bubbles and surfaces sit on the "in" colour. */
+  --card: var(--color-wa-bubble-in);
+  --card-foreground: var(--color-wa-text);
+  --popover: var(--color-wa-input);
+  --popover-foreground: var(--color-wa-text);
+
+  /* Outgoing bubbles are the primary surface, hence the green. */
+  --primary: var(--color-wa-bubble-out);
+  --primary-foreground: var(--color-wa-text);
+
+  --secondary: var(--color-wa-bubble-in);
+  --secondary-foreground: var(--color-wa-text);
+  --muted: var(--color-wa-bubble-in);
+  --muted-foreground: var(--color-wa-text-secondary);
+  --accent: var(--color-wa-avatar);
+  --accent-foreground: var(--color-wa-text);
+
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+
+  --border: var(--color-wa-divider);
+  --input: var(--color-wa-input);
+  --ring: var(--color-wa-send);
+}
