@@ -15,7 +15,7 @@ import {
   DocumentMessage,
   ImageMessage,
   LocationMessage,
-  MessageScrollerDays,
+  MessageThread,
   PollMessage,
   StickerMessage,
   SystemMessage,
@@ -93,11 +93,13 @@ export function PrivateChatExample({
   return (
     <Chat colorScheme={colorScheme} theme={theme} bordered className="h-[520px] w-full">
       <ChatHeader name="Ana Ribeiro" subtitle="online" avatarUrl={sampleAvatar} />
-      <ChatContent className="overflow-y-auto p-3">
-        <SystemMessage>Messages are end-to-end encrypted.</SystemMessage>
-        <div className="flex flex-col gap-1">
-          <MessageScrollerDays messages={messages}>{message => message.node}</MessageScrollerDays>
-        </div>
+      <ChatContent>
+        <MessageThread
+          messages={messages}
+          leading={<SystemMessage>Messages are end-to-end encrypted.</SystemMessage>}
+        >
+          {message => message.node}
+        </MessageThread>
       </ChatContent>
       <ChatFooter>
         <ChatComposer onSend={send}>
@@ -176,10 +178,8 @@ export function GroupChatExample({
   return (
     <Chat colorScheme={colorScheme} theme={theme} bordered className="h-[520px] w-full">
       <ChatHeader name="Friday plans" subtitle="Ana, Marco, Júlia" />
-      <ChatContent className="overflow-y-auto p-3">
-        <div className="flex flex-col gap-1">
-          <MessageScrollerDays messages={messages}>{message => message.node}</MessageScrollerDays>
-        </div>
+      <ChatContent>
+        <MessageThread messages={messages}>{message => message.node}</MessageThread>
       </ChatContent>
     </Chat>
   );
@@ -276,10 +276,8 @@ export function MediaChatExample({
   return (
     <Chat colorScheme={colorScheme} theme={theme} bordered className="h-[520px] w-full">
       <ChatHeader name="Ana Ribeiro" subtitle="last seen today" avatarUrl={sampleAvatar} />
-      <ChatContent className="overflow-y-auto p-3">
-        <div className="flex flex-col gap-1">
-          <MessageScrollerDays messages={messages}>{message => message.node}</MessageScrollerDays>
-        </div>
+      <ChatContent>
+        <MessageThread messages={messages}>{message => message.node}</MessageThread>
       </ChatContent>
     </Chat>
   );

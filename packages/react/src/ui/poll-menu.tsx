@@ -13,7 +13,8 @@ export interface PollDraft {
 }
 
 export interface PollMenuProps {
-  children: React.ReactNode;
+  /** Element that opens the menu. Becomes the trigger via Base UI's `render`. */
+  trigger: React.ReactElement;
   /** Called with the completed draft when the user confirms. */
   onCreate?: (poll: PollDraft) => void;
   maxOptions?: number;
@@ -30,7 +31,7 @@ function createOption(): DraftOption {
 }
 
 /** Composer popover for building a poll before sending it. */
-function PollMenu({ children, onCreate, maxOptions = 12, className }: PollMenuProps) {
+function PollMenu({ trigger, onCreate, maxOptions = 12, className }: PollMenuProps) {
   const [question, setQuestion] = React.useState('');
   const [options, setOptions] = React.useState<DraftOption[]>(() => [
     createOption(),
@@ -55,7 +56,7 @@ function PollMenu({ children, onCreate, maxOptions = 12, className }: PollMenuPr
 
   return (
     <Popover>
-      <PopoverTrigger data-slot="poll-menu-trigger">{children}</PopoverTrigger>
+      <PopoverTrigger data-slot="poll-menu-trigger" render={trigger} />
       <PopoverContent data-slot="poll-menu" className={cn('flex w-72 flex-col gap-3', className)}>
         <div className="flex flex-col gap-1.5">
           <label className="text-xs font-medium" htmlFor="poll-question">

@@ -8,6 +8,9 @@
 @import 'whatsapp-ui-react/css/rose.css';
 @import 'whatsapp-ui-react/css/preset.css';
 
+/* Maps the palettes onto the shadcn tokens the components are written against. */
+@import 'whatsapp-ui-react/css/theme.css';
+
 @source '../../../packages/react/src';
 @source '../app';
 @source '../components';

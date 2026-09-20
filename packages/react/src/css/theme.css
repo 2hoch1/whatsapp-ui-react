@@ -35,7 +35,14 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-:root {
+/*
+ * Declared on `[data-wa-color]` as well as `:root` on purpose. A var() chain is resolved where the
+ * property is declared, then inherits as a computed value: mapping only at `:root` would freeze
+ * every token to the root palette, so a `<Chat colorScheme>` or its `dark` class could never
+ * retint anything. Re-declaring at the chat element makes them resolve against its own palette.
+ */
+:root,
+[data-wa-color] {
   --radius: 0.525rem;
 
   --background: var(--color-wa-bg);

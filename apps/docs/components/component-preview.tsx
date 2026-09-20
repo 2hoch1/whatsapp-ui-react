@@ -16,10 +16,12 @@ export function ComponentPreview({ name, children, hideCommand }: ComponentPrevi
 
   return (
     <div className="not-prose my-6 flex flex-col gap-3">
-      <div
-        data-wa-color="natural"
-        className="border-fd-border bg-fd-card flex min-h-64 items-center justify-center overflow-hidden rounded-xl border p-6"
-      >
+      {/*
+        No `data-wa-color` here on purpose: pinning a palette would fix the WhatsApp tokens to
+        their light values while Tailwind's `dark:` variants still follow the site theme, so
+        variants that use both would end up with dark backgrounds under dark text.
+      */}
+      <div className="border-fd-border bg-fd-card flex min-h-64 items-center justify-center overflow-hidden rounded-xl border p-6">
         {children ??
           (Demo ? (
             <Demo />

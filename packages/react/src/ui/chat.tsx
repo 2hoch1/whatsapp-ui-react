@@ -25,7 +25,11 @@ const chatVariants = cva(
 );
 
 export interface ChatProps extends React.ComponentProps<'div'>, VariantProps<typeof chatVariants> {
-  /** Selects a palette by setting `data-wa-color`. */
+  /**
+   * Selects a palette by setting `data-wa-color`. Left unset, the chat inherits whatever palette
+   * and light/dark state the surrounding page already has, which is usually what you want when
+   * embedding it in an app that already themes itself.
+   */
   colorScheme?: ChatColorScheme;
   /** Adds the `dark` class so the palette's dark values apply. */
   theme?: 'light' | 'dark';
@@ -34,7 +38,7 @@ export interface ChatProps extends React.ComponentProps<'div'>, VariantProps<typ
 }
 
 function Chat({
-  colorScheme = 'natural',
+  colorScheme,
   theme,
   background,
   bordered,

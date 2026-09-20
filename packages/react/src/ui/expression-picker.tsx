@@ -39,8 +39,12 @@ function ExpressionPicker({ children }: ExpressionPickerProps) {
   );
 }
 
-function ExpressionPickerTrigger({ children }: { children: React.ReactNode }) {
-  return <PopoverTrigger data-slot="expression-picker-trigger">{children}</PopoverTrigger>;
+/**
+ * Opens the picker. Pass your own control through `render` rather than as a child: Base UI's
+ * trigger renders a `<button>`, so nesting a button inside it produces invalid HTML.
+ */
+function ExpressionPickerTrigger(props: React.ComponentProps<typeof PopoverTrigger>) {
+  return <PopoverTrigger data-slot="expression-picker-trigger" {...props} />;
 }
 
 export interface ExpressionPickerTabsProps extends React.ComponentProps<typeof Tabs> {
@@ -59,8 +63,10 @@ function ExpressionPickerTabs({
       data-slot="expression-picker"
       className={cn('w-88 max-w-[90vw] p-0', className)}
     >
-      <Tabs defaultValue={defaultValue} {...props}>
-        <TabsList className="w-full">
+      {/* The column direction is set here rather than inherited: the Tabs root only switches to
+          a column via a `data-horizontal` attribute, which is not always emitted. */}
+      <Tabs defaultValue={defaultValue} className="flex w-full flex-col gap-0" {...props}>
+        <TabsList className="w-full shrink-0 rounded-none">
           <TabsTrigger value="emoji">Emoji</TabsTrigger>
           <TabsTrigger value="sticker">Stickers</TabsTrigger>
           <TabsTrigger value="gif">GIFs</TabsTrigger>
@@ -94,7 +100,7 @@ export interface ExpressionPickerEmojiGridProps {
 function ExpressionPickerEmojiGrid({ emojis, onSelect }: ExpressionPickerEmojiGridProps) {
   return (
     <TabsContent value="emoji">
-      <ScrollArea className="h-64">
+      <ScrollArea className="h-64 w-full">
         <div className="grid grid-cols-8 gap-1 p-2">
           {emojis.map(emoji => (
             <button
@@ -121,7 +127,7 @@ export interface ExpressionPickerStickerGridProps {
 function ExpressionPickerStickerGrid({ stickers, onSelect }: ExpressionPickerStickerGridProps) {
   return (
     <TabsContent value="sticker">
-      <ScrollArea className="h-64">
+      <ScrollArea className="h-64 w-full">
         <div className="grid grid-cols-4 gap-2 p-2">
           {stickers.map(sticker => (
             <button
@@ -147,7 +153,7 @@ export interface ExpressionPickerGifGridProps {
 function ExpressionPickerGifGrid({ gifs, onSelect }: ExpressionPickerGifGridProps) {
   return (
     <TabsContent value="gif">
-      <ScrollArea className="h-64">
+      <ScrollArea className="h-64 w-full">
         <div className="grid grid-cols-2 gap-2 p-2">
           {gifs.map(gif => (
             <button

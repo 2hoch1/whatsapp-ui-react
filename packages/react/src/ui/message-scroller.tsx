@@ -8,7 +8,14 @@ import {
   type GroupedMessage,
   type MessageDayGroup,
 } from '@/lib/group-messages';
-import { MessageScrollerItem } from '@/ui/components/message-scroller';
+import {
+  MessageScroller,
+  MessageScrollerButton,
+  MessageScrollerContent,
+  MessageScrollerItem,
+  MessageScrollerProvider,
+  MessageScrollerViewport,
+} from '@/ui/components/message-scroller';
 
 export interface MessageDayDividerProps extends Omit<React.ComponentProps<'div'>, 'children'> {
   date: Date;
@@ -84,7 +91,10 @@ function MessageScrollerDays({ messages, children }: MessageScrollerDaysProps) {
               </MessageScrollerItem>
             )}
             {group.messages.map((message, messageIndex) => (
-              <MessageScrollerItem key={message.id ?? `${groupIndex}-${messageIndex}`}>
+              <MessageScrollerItem
+                key={message.id ?? `${groupIndex}-${messageIndex}`}
+                className="flex flex-col"
+              >
                 {children(message, { top: messageIndex === 0 })}
               </MessageScrollerItem>
             ))}
@@ -95,6 +105,49 @@ function MessageScrollerDays({ messages, children }: MessageScrollerDaysProps) {
   );
 }
 
-export { MessageDayDivider, MessageScrollerDays };
+export interface MessageThreadProps extends Omit<
+  React.ComponentProps<typeof MessageScroller>,
+  'children'
+> {
+  messages: GroupedMessage[];
+  children: (message: GroupedMessage, context: MessageRenderContext) => React.ReactNode;
+  /** Rendered as the first item, above the oldest message. For encryption banners and similar. */
+  leading?: React.ReactNode;
+  /** Pins the view to the newest message as items arrive. @defaultValue `true` */
+  autoScroll?: boolean;
+  /** Hides the jump-to-latest button. */
+  hideScrollButton?: boolean;
+}
+
+/**
+ * A whole thread in one component: provider, scroller, viewport, content and day dividers.
+ * `MessageScrollerItem` throws outside a `MessageScroller`, so this wrapper exists to make the
+ * correct nesting the default rather than something each caller reassembles.
+ */
+function MessageThread({
+  messages,
+  children,
+  leading,
+  autoScroll = true,
+  hideScrollButton = false,
+  className,
+  ...props
+}: MessageThreadProps) {
+  return (
+    <MessageScrollerProvider autoScroll={autoScroll}>
+      <MessageScroller className={className} {...props}>
+        <MessageScrollerViewport>
+          <MessageScrollerContent className="gap-1 p-3">
+            {leading && <MessageScrollerItem>{leading}</MessageScrollerItem>}
+            <MessageScrollerDays messages={messages}>{children}</MessageScrollerDays>
+          </MessageScrollerContent>
+        </MessageScrollerViewport>
+        {!hideScrollButton && <MessageScrollerButton />}
+      </MessageScroller>
+    </MessageScrollerProvider>
+  );
+}
+
+export { MessageDayDivider, MessageScrollerDays, MessageThread };
 
 export * from '@/ui/components/message-scroller';

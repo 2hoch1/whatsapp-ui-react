@@ -14,7 +14,8 @@ export interface ContactMenuEntry {
 }
 
 export interface ContactMenuProps {
-  children: React.ReactNode;
+  /** Element that opens the menu. Becomes the trigger via Base UI's `render`. */
+  trigger: React.ReactElement;
   contacts: ContactMenuEntry[];
   onSelect?: (contact: ContactMenuEntry) => void;
   emptyLabel?: string;
@@ -23,7 +24,7 @@ export interface ContactMenuProps {
 
 /** Contact chooser used when sharing a contact card into a conversation. */
 function ContactMenu({
-  children,
+  trigger,
   contacts,
   onSelect,
   emptyLabel = 'No contacts',
@@ -31,7 +32,7 @@ function ContactMenu({
 }: ContactMenuProps) {
   return (
     <Popover>
-      <PopoverTrigger data-slot="contact-menu-trigger">{children}</PopoverTrigger>
+      <PopoverTrigger data-slot="contact-menu-trigger" render={trigger} />
       <PopoverContent data-slot="contact-menu" className={cn('w-64 p-1', className)}>
         {contacts.length === 0 ? (
           <p className="text-muted-foreground px-2 py-6 text-center text-sm">{emptyLabel}</p>

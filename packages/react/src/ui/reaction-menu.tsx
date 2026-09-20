@@ -7,7 +7,11 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/ui/components/popover
 export const DEFAULT_REACTIONS = ['👍', '❤️', '😂', '😮', '😢', '🙏'] as const;
 
 export interface ReactionMenuProps {
-  children: React.ReactNode;
+  /**
+   * Element that opens the menu. Passed to Base UI's `render`, so it becomes the trigger rather
+   * than being nested inside one; wrapping a button in the trigger would nest two `<button>`s.
+   */
+  trigger: React.ReactElement;
   emojis?: readonly string[];
   /** Emoji the current user already picked, highlighted in the row. */
   value?: string;
@@ -17,7 +21,7 @@ export interface ReactionMenuProps {
 
 /** Quick reaction picker anchored to a message. */
 function ReactionMenu({
-  children,
+  trigger,
   emojis = DEFAULT_REACTIONS,
   value,
   onSelect,
@@ -25,7 +29,7 @@ function ReactionMenu({
 }: ReactionMenuProps) {
   return (
     <Popover>
-      <PopoverTrigger data-slot="reaction-menu-trigger">{children}</PopoverTrigger>
+      <PopoverTrigger data-slot="reaction-menu-trigger" render={trigger} />
       <PopoverContent
         data-slot="reaction-menu"
         className={cn('flex w-auto items-center gap-1 rounded-full p-1.5', className)}

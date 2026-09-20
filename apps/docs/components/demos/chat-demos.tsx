@@ -19,7 +19,7 @@ import {
   ExpressionPickerSearch,
   ExpressionPickerTabs,
   ExpressionPickerTrigger,
-  MessageScrollerDays,
+  MessageThread,
   Placeholder,
   PollMenu,
   ReactionMenu,
@@ -94,11 +94,13 @@ export function ChatDemo() {
   return (
     <Chat bordered className="h-[480px] w-full max-w-md">
       <ChatHeader name="Ana Ribeiro" subtitle="online" avatarUrl={sampleAvatar} />
-      <ChatContent className="overflow-y-auto p-3">
-        <SystemMessage>Messages are end-to-end encrypted.</SystemMessage>
-        <div className="flex flex-col gap-1">
-          <MessageScrollerDays messages={thread}>{message => message.node}</MessageScrollerDays>
-        </div>
+      <ChatContent>
+        <MessageThread
+          messages={thread}
+          leading={<SystemMessage>Messages are end-to-end encrypted.</SystemMessage>}
+        >
+          {message => message.node}
+        </MessageThread>
       </ChatContent>
       <ChatFooter>
         <ChatComposer onSend={() => {}}>
@@ -154,8 +156,8 @@ export function ExpressionPickerDemo() {
   return (
     <div className="flex flex-col items-center gap-3">
       <ExpressionPicker>
-        <ExpressionPickerTrigger>
-          <Button variant="outline">Open picker</Button>
+        <ExpressionPickerTrigger render={<Button variant="outline" />}>
+          Open picker
         </ExpressionPickerTrigger>
         <ExpressionPickerTabs>
           <ExpressionPickerSearch />
@@ -172,9 +174,11 @@ export function ReactionMenuDemo() {
 
   return (
     <div className="flex flex-col items-center gap-3">
-      <ReactionMenu value={reaction} onSelect={setReaction}>
-        <Button variant="outline">React to a message</Button>
-      </ReactionMenu>
+      <ReactionMenu
+        value={reaction}
+        onSelect={setReaction}
+        trigger={<Button variant="outline">React to a message</Button>}
+      />
       {reaction && <p className="text-sm">Reacted with {reaction}</p>}
     </div>
   );
@@ -192,9 +196,8 @@ export function ContactMenuDemo() {
           { id: '3', name: 'Júlia Costa', subtitle: 'Family' },
         ]}
         onSelect={contact => setChosen(contact.name)}
-      >
-        <Button variant="outline">Share a contact</Button>
-      </ContactMenu>
+        trigger={<Button variant="outline">Share a contact</Button>}
+      />
       {chosen && <p className="text-sm">Selected {chosen}</p>}
     </div>
   );
@@ -205,9 +208,10 @@ export function PollMenuDemo() {
 
   return (
     <div className="flex flex-col items-center gap-3">
-      <PollMenu onCreate={poll => setCreated(poll.question)}>
-        <Button variant="outline">Create a poll</Button>
-      </PollMenu>
+      <PollMenu
+        onCreate={poll => setCreated(poll.question)}
+        trigger={<Button variant="outline">Create a poll</Button>}
+      />
       {created && <p className="text-sm">Created “{created}”</p>}
     </div>
   );
@@ -224,10 +228,8 @@ export function PlaceholderDemo() {
 export function MessageScrollerDemo() {
   return (
     <Chat bordered className="h-80 w-full max-w-md">
-      <ChatContent className="overflow-y-auto p-3">
-        <div className="flex flex-col gap-1">
-          <MessageScrollerDays messages={thread}>{message => message.node}</MessageScrollerDays>
-        </div>
+      <ChatContent>
+        <MessageThread messages={thread}>{message => message.node}</MessageThread>
       </ChatContent>
     </Chat>
   );

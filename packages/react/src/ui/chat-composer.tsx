@@ -109,15 +109,16 @@ function ChatComposerAttachmentButton({
 }
 
 export interface ChatComposerAttachmentMenuProps {
-  children: React.ReactNode;
+  /** Element that opens the menu. Becomes the trigger via Base UI's `render`. */
+  trigger: React.ReactElement;
   /** Menu contents shown when the trigger is pressed. */
   items: React.ReactNode;
 }
 
-function ChatComposerAttachmentMenu({ children, items }: ChatComposerAttachmentMenuProps) {
+function ChatComposerAttachmentMenu({ trigger, items }: ChatComposerAttachmentMenuProps) {
   return (
     <Popover>
-      <PopoverTrigger data-slot="chat-composer-attachment-menu-trigger">{children}</PopoverTrigger>
+      <PopoverTrigger data-slot="chat-composer-attachment-menu-trigger" render={trigger} />
       <PopoverContent data-slot="chat-composer-attachment-menu" className="w-56 p-1">
         {items}
       </PopoverContent>
